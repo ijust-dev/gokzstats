@@ -457,19 +457,26 @@ function getPlayerPoints(url) {
 }
 
 function getPlayerInfo_table_globals_only(postTimes) {
-  $("#TableTimes td").remove();
+  $("#TableTimes tr").remove();
   let row = document.getElementById("TableTimes").insertRow(-1);
   let cell1 = row.insertCell(0);
   let cell2 = row.insertCell(1);
   let cell3 = row.insertCell(2);
   let cell4 = row.insertCell(3);
   let cell5 = row.insertCell(4);
+  let cell6 = row.insertCell(5);
   row.id = "TableTitle";
   cell1.innerHTML = "Map Name";
   cell2.innerHTML = "Time";
-  cell3.innerHTML = "Points";
-  cell4.innerHTML = "Server";
-  cell5.innerHTML = "Date";
+  if (document.getElementById("showTimes").innerHTML === "Show Pro Times") {
+    cell3.innerHTML = "TPs";
+  }
+  else {
+    cell3.innerHTML = "";
+  }
+  cell4.innerHTML = "Points";
+  cell5.innerHTML = "Server";
+  cell6.innerHTML = "Date";
   count = 0;
   document.getElementById("showGlobalTimes").innerHTML = "Show All Times";
   for (i=0;i<postTimes.length;i++) {
@@ -486,21 +493,28 @@ function getPlayerInfo_table_globals_only(postTimes) {
     let cell3 = row.insertCell(2);
     let cell4 = row.insertCell(3);
     let cell5 = row.insertCell(4);
+    let cell6 = row.insertCell(5);
 
     cell1.parentNode.id = postTimes[i].map_name;
     cell1.innerHTML = "🏆 " + postTimes[i].map_name;
     cell2.innerHTML = timeConvert(postTimes[i].time);
-    cell3.innerHTML = postTimes[i].points;
+    if (document.getElementById("showTimes").innerHTML === "Show Pro Times") {
+      cell3.innerHTML = (postTimes[i].teleports > 1 ? postTimes[i].teleports + " TPs" : postTimes[i].teleports + " TP");
+    }
+    else {
+      cell3.innerHTML = "";
+    }
+    cell4.innerHTML = postTimes[i].points;
     if (postTimes[i].server_name === null) {
-      cell4.innerHTML = "NA";
+      cell5.innerHTML = "NA";
     }
     else if (postTimes[i].server_name.length > 18) {
-      cell4.innerHTML = postTimes[i].server_name.substr(0,15) + "...";
+      cell5.innerHTML = postTimes[i].server_name.substr(0,15) + "...";
     } else {
-      cell4.innerHTML = postTimes[i].server_name;
+      cell5.innerHTML = postTimes[i].server_name;
     }
-    cell4.style.color = "#E45051";
-    cell5.innerHTML = dateConvert(postTimes[i].created_on);
+    cell5.style.color = "#E45051";
+    cell6.innerHTML = dateConvert(postTimes[i].created_on);
     count++;
   }
   enableScrolling();
@@ -515,7 +529,7 @@ function getPlayerInfo_table_globals_only(postTimes) {
 }
 
 function getPlayerInfo_table(postTimes) {
-  $("#TableTimes td").remove();
+  $("#TableTimes tr").remove();
   let row = document.getElementById("TableTimes").insertRow(-1);
   let cell1 = row.insertCell(0);
   let cell2 = row.insertCell(1);
@@ -536,12 +550,14 @@ function getPlayerInfo_table(postTimes) {
     let cell3 = row.insertCell(2);
     let cell4 = row.insertCell(3);
     let cell5 = row.insertCell(4);
+    let cell6 = row.insertCell(5);
     row.id = "TableTitle";
     cell1.innerHTML = "Map Name";
     cell2.innerHTML = "Time";
-    cell3.innerHTML = "Points";
-    cell4.innerHTML = "Server";
-    cell5.innerHTML = "Date";
+    cell3.innerHTML = "";
+    cell4.innerHTML = "Points";
+    cell5.innerHTML = "Server";
+    cell6.innerHTML = "Date";
   }
   let count = 0;
   document.getElementById("showGlobalTimes").innerHTML = "Show Global Times";
@@ -571,7 +587,7 @@ function getPlayerInfo_table(postTimes) {
         cell1.innerHTML = postTimes[i].map_name;
       }
       cell2.innerHTML = timeConvert(postTimes[i].time);
-      cell3.innerHTML = postTimes[i].teleports + " TPs";
+      cell3.innerHTML = (postTimes[i].teleports > 1 ? postTimes[i].teleports + " TPs" : postTimes[i].teleports + " TP");
       cell4.innerHTML = postTimes[i].points;
 
 
@@ -590,6 +606,7 @@ function getPlayerInfo_table(postTimes) {
       let cell3 = row.insertCell(2);
       let cell4 = row.insertCell(3);
       let cell5 = row.insertCell(4);
+      let cell6 = row.insertCell(5);
       cell1.parentNode.id = postTimes[i].map_name;
       if (postTimes[i].points === 1000) {
         cell1.innerHTML = "🏆 " + postTimes[i].map_name;
@@ -599,21 +616,21 @@ function getPlayerInfo_table(postTimes) {
       }
       cell2.innerHTML = timeConvert(postTimes[i].time);
       if (postTimes[i].points === 0) {
-        cell3.innerHTML = "-";
+        cell4.innerHTML = "-";
       }
       else {
-        cell3.innerHTML = postTimes[i].points;
+        cell4.innerHTML = postTimes[i].points;
       }
       if(postTimes[i].server_name === null) {
-        cell4.innerHTML = "null";
+        cell5.innerHTML = "null";
       }
       else if (postTimes[i].server_name.length > 18) {
-        cell4.innerHTML = postTimes[i].server_name.substr(0,15) + "...";
+        cell5.innerHTML = postTimes[i].server_name.substr(0,15) + "...";
       } else {
-        cell4.innerHTML = postTimes[i].server_name;
+        cell5.innerHTML = postTimes[i].server_name;
       }
-      cell4.style.color = "#E45051"
-      cell5.innerHTML = dateConvert(postTimes[i].created_on);
+      cell5.style.color = "#E45051"
+      cell6.innerHTML = dateConvert(postTimes[i].created_on);
     }
     count++;
   }
@@ -630,7 +647,7 @@ function getPlayerInfo_table(postTimes) {
 
 // Sort Player Info. Gets a specific map on a player's profile.
 function sortPlayerInfo(map) {
-  $("#TableTimes td").remove();
+  $("#TableTimes tr").remove();
 
   let row = document.getElementById("TableTimes").insertRow(-1);
   let cell1 = row.insertCell(0);
@@ -638,6 +655,7 @@ function sortPlayerInfo(map) {
   let cell3 = row.insertCell(2);
   let cell4 = row.insertCell(3);
   let cell5 = row.insertCell(4);
+  let cell6 = row.insertCell(5);
   row.id = "TableTitle";
   cell1.innerHTML = "Map Name";
   cell2.innerHTML = "Time";
@@ -645,10 +663,11 @@ function sortPlayerInfo(map) {
     cell3.innerHTML = "TPs";
   }
   else {
-    cell3.innerHTML = "Points";
+    cell3.innerHTML = "";
   }
-  cell4.innerHTML = "Server";
-  cell5.innerHTML = "Date";
+  cell4.innerHTML = "Points";
+  cell5.innerHTML = "Server";
+  cell6.innerHTML = "Date";
 
   let tempcount = 0;
 
@@ -664,6 +683,7 @@ function sortPlayerInfo(map) {
       let cell3 = row.insertCell(2);
       let cell4 = row.insertCell(3);
       let cell5 = row.insertCell(4);
+      let cell6 = row.insertCell(5);
 
       row.id = postTimes[i].map_name;
       if (postTimes[i].points === 1000) {
@@ -674,14 +694,15 @@ function sortPlayerInfo(map) {
       }
       cell2.innerHTML = timeConvert(postTimes[i].time);
       if (document.getElementById("showTimes").innerHTML === "Show Pro Times") {
-        cell3.innerHTML = postTimes[i].teleports;
+        cell3.innerHTML = (postTimes[i].teleports > 1 ? postTimes[i].teleports + " TPs" : postTimes[i].teleports + " TP");
       }
       else {
-        cell3.innerHTML = postTimes[i].points;
+        cell3.innerHTML = "";
       }
-      cell4.innerHTML = postTimes[i].server_name;
-      cell4.style.color = "#E45051";
-      cell5.innerHTML = dateConvert(postTimes[i].created_on);
+      cell4.innerHTML = postTimes[i].points;
+      cell5.innerHTML = (postTimes[i].server_name === null ? "null" : postTimes[i].server_name);
+      cell5.style.color = "#E45051";
+      cell6.innerHTML = dateConvert(postTimes[i].created_on);
       tempcount++;
       if (tempcount === 20) {
         break;
@@ -716,7 +737,7 @@ function getPlayerInfo(url) {
   usedTimes = [];
   postTimes = [];
 
-  $("#TableTimes td").remove();
+  $("#TableTimes tr").remove();
   $("#playerName a").remove();
 
   if (mode === "kz_simple") {
