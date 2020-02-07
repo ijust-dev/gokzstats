@@ -1,0 +1,1298 @@
+html, body {
+  background-color: #424242;
+  height: 100%;
+  margin: 0;
+}
+
+#graph_container, #button_container {
+  display: none;
+  justify-content: center;
+}
+
+#gokz_api_bans_title {
+  display: none;
+}
+
+#maps {
+  display: none;
+}
+
+#wr_progression_button, #show_more_leaderboards_button {
+  background-color: #191919;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  display: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  outline: none;
+  padding: 15px;
+}
+
+#LeaderboardMode {
+  background-color: #191919;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+#show_more_leaderboards_button {
+  margin: 15px;
+}
+
+#map_graph {
+  display: none;
+  padding: 25px 0px 25px 0px;
+}
+
+#loading {
+  display: none;
+}
+
+#errorloading {
+  display: none;
+}
+
+.navbar {
+  display: none;
+}
+
+.title {
+  display: none;
+}
+
+.mobile-nav {
+  color: #DDDFD4;
+  display: flex;
+  height: 34px;
+}
+
+.mobile-nav-logo {
+  height: 36px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0%);
+  width: auto;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner {
+  background-color: #191919;
+  display: flex;
+  height: 40px;
+  justify-content: flex-start;
+  padding: 3px 15px 3px 35px;
+  width: auto;
+}
+
+.Header {
+  width: 100%;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  color: #E45051;
+  cursor: pointer;
+  display: flex;
+  letter-spacing: 1px;
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+  margin: 5px;
+  outline: none;
+}
+
+td, a, img {
+  cursor: pointer;
+}
+
+.modes {
+  background-color: #191919;
+  display: flex;
+  justify-content: center;
+}
+
+#displayTimes {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  position: relative;
+  width: 90%;
+}
+
+#recentTimes {
+  background-color: #191919;
+  border-right: 4px #E45051 inset;
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(10px + .05vh);
+  height: auto;
+  text-align: center;
+  width: 100%;
+}
+
+#recentTimes span {
+  font-size: calc(12px + .1vw);
+  overflow: hidden;
+  padding: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#topTimes {
+  background-color: #191919;
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(10px + .05vh);
+  height: auto;
+  text-align: center;
+  width: 100%;
+}
+
+#topTimes span {
+  font-size: calc(12px + .1vh);
+  overflow: hidden;
+  padding: 5px;
+  padding-bottom: 25px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#displayMapData {
+  background-color: #191919;
+  display: none;
+  height: 135px;
+  justify-content: center;
+  margin: auto;
+  width: 90%;
+}
+
+#MapData-parent {
+  display: inherit;
+  flex-direction: row;
+}
+
+#MapData-Image {
+  align-self: flex-end;
+  display: flex;
+  width: auto;
+  height: 120px;
+}
+
+#MapData-Text {
+  align-items: flex-start;
+  background-color: rgba(0,0,0,0.2);
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 15px;
+  padding: 0px 15px 0px 15px;
+}
+
+#MapData-Text div {
+  overflow: hidden;
+  padding: 3px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+#Tables {
+  border-collapse: collapse;
+  color: white;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+#Tables tr {
+  color: #FFF;
+  padding: 0px;
+}
+
+#Tables tbody tr {
+  border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
+}
+
+#Tables tbody tr:last-child {
+  border-bottom: none;
+}
+
+#Tables tbody tr td:nth-child(2) {
+  display: inline-block;
+  overflow: hidden;
+  padding: 6px;
+  text-overflow: ellipsis;
+  width: 80px;
+  white-space: nowrap;
+}
+
+#Tables tbody tr td:nth-child(3) {
+  width: 80px;
+}
+
+#Tables tbody tr td:nth-child(4) {
+  width: 60px;
+}
+
+#Tables tbody tr td:nth-child(6) {
+  width: 120px;
+  display: none;
+}
+
+#TableTimes tbody tr td:nth-child(4) {
+  display: none;
+}
+
+#Tables tbody tr td:last-child, #TableTimes tbody tr td:last-child {
+  display: none;
+}
+
+#Tables tbody tr td:first-child {
+  color: #E45051;
+}
+
+#displayMapTimes {
+  align-items: flex-start;
+  background-color: #191919;
+  display: none;
+  flex-direction: row;
+  font-family: sans-serif;
+  justify-content: center;
+  margin: auto;
+  width: 90%;
+}
+
+#recentMapTimes {
+  background-color: #191919;
+  display: none;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  max-width: 900px;
+  text-align: center;
+  width: 50%;
+}
+
+#topMapTimes {
+  background-color: #191919;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  max-width: 900px;
+  text-align: center;
+}
+
+#displayPlayerProfile {
+  display: none;
+  margin: auto;
+  justify-content: center;
+  width: 98%;
+}
+
+#playerInfo {
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(12px + 0.4vh);
+  padding-top: 15px;
+}
+
+#playerInfo a {
+  font-size: 32px;
+  justify-content: center;
+}
+
+#playerInfo #playerPoints {
+  font-size: 18px;
+  padding: 5px 0px 5px 0px;
+  text-align: center;
+}
+
+#playerInfo #playerSteamID, #playerInfo, #playerInfo div, #playerInfo #playerWorldRecords {
+  font-size: 14px;
+  padding: 5px 0px 5px 0px;
+  text-align: center;
+  width: 300px;
+}
+
+#showTimes, #showGlobalTimes {
+  cursor: pointer;
+  padding: 15px;
+}
+
+#displayPlayerTimes {
+  align-items: center;
+  background-color: #191919;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  height: 120%;
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+#NoPlayer {
+  align-items: center;
+  background-color: #191919;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
+  height: 120%;
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+#displayPlayerTimes a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+
+#displayPlayerTimes h2 {
+  text-align: center;
+}
+
+#TablesPlayer {
+  font-size: calc(9px + .5vh);
+  padding-top: 10px;
+}
+
+#TablesPlayer tbody tr td {
+  color: #FFF;
+  font-family: 'Montserrat', sans-serif;
+  padding: 8px;
+}
+
+#TablesPlayer tbody tr {
+  border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
+}
+
+#TablesPlayer tbody tr:first-child, tr:last-child {
+  border-bottom: none;
+}
+
+#TablesPlayer tbody tr td:nth-child(1) {
+  text-align: left;
+  width: 200px;
+}
+
+#TablesPlayer tbody tr td:nth-child(2) {
+  text-align: right;
+}
+
+#TablesPlayer tbody tr td:nth-child(3) {
+  text-align: right;
+}
+
+#TablesPlayer tbody tr td:nth-child(3) {
+  text-align: right;
+}
+
+#TablesPlayer tbody tr td:nth-child(4) {
+  display: none;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100px;
+}
+
+#TablesPlayer tbody tr td:nth-child(5) {
+  text-align: right;
+}
+
+#TableTitle td {
+  color: #E45051 !important;
+}
+
+#TableTimes tr td:nth-child(2) {
+  border-bottom: none;
+  padding-left: 0px;
+}
+
+#TableTimes tr td:nth-child(3) {
+  border-bottom: none;
+  padding-left: 0px;
+}
+
+#TableTimes tr:last-child {
+  border-bottom: none;
+}
+
+.map_div {
+  display: flex;
+  flex-direction: column;
+  height: 27vh;
+  padding-bottom: 3vh;
+}
+
+.map_div span {
+  align-self: center;
+  width: 23.5vh;
+}
+
+.map_div div {
+  color: #E45051;
+  display: inline-block;
+}
+
+.map_div img {
+  align-self: center;
+  height: 14vh;
+  position: relative;
+  width: 24vh;
+}
+
+.map_div img::after {
+  background-color: #191919;
+  bottom: 0%;
+  color: white;
+  content: "Image not available";
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#playerLeaderboards {
+  align-items: center;
+  display: none;
+  flex-direction: column;
+  font-family: sans-serif;
+  justify-content: center;
+  margin: auto;
+  width: 98%;
+}
+
+#LeaderboardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#TitleLeaderboards {
+  color: white;
+  outline: none;
+  text-decoration: none;
+}
+
+#proPlayerLeaderboards {
+  background-color: #191919;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  min-height: 850px;
+  padding-bottom: 25px;
+  text-align: center;
+}
+
+#LeaderboardTables_points_title, #LeaderboardTables_records_title {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+
+#LeaderboardOptions {
+  color: white;
+  display: none;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+#LeaderBoardOptions_tech, #LeaderBoardOptions_bhop, #LeaderBoardOptions_climb, #LeaderBoardOptions_combo, #LeaderBoardOptions_overall {
+  background: none;
+  border: none;
+  color: #E45051;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  outline: none;
+  padding: 10px 50px 10px 50px;
+}
+
+#LeaderBoardOptions_tech:hover, #LeaderBoardOptions_bhop:hover, #LeaderBoardOptions_climb:hover, #LeaderBoardOptions_combo:hover, #LeaderBoardOptions_overall:hover {
+  color: orange !important;
+  transition: 0.2s ease;
+}
+
+#searchBar {
+  background-color: #191919;
+  border-bottom: 4px #393E46 solid;
+  display: flex;
+  justify-content: center;
+}
+
+#errorWarning {
+  background-color: #191919;
+  color: white;
+  display: none;
+  font-family: 'Lalezar', cursive;
+  justify-content: center;
+  text-align: center;
+}
+
+#mode-kz_vanilla-desktop:hover, #mode-kz_simple-desktop:hover, #mode-kz_timer-desktop:hover {
+  color: orange !important;
+  transition: 0.2s ease;
+}
+
+#mode-kz_simple-desktop {
+  color: orange;
+}
+
+input[type=search] {
+  background: transparent;
+  border: none;
+  border-bottom: 2px #dddfd4 solid;
+  border-radius: 4px;
+  color: #dddfd4;
+  font-size: 16px;
+  margin: 8px 0px;
+  min-width: 80%;
+  outline: none;
+  text-align: center;
+  padding-left: 15px;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+  background: #E45051;
+  border-radius: 4px;
+  color: #E45051;
+  height: 10px;
+  width: 10px;
+  -webkit-appearance: none;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+
+::-webkit-scrollbar-track
+{
+  background: linear-gradient(#191919, #393E46); /* Standard syntax */
+  background: -webkit-linear-gradient(#191919, #393E46); /* For Safari 5.1 to 6.0 */
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar
+{
+  background-color: transparent;
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: #E45051;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}
+
+#pagination, #previous, #next {
+  display: flex;
+}
+
+#pagination {
+  flex-direction: row;
+  justify-content: center;
+  opacity: 1;
+}
+
+#previous, #next {
+  display: inline-block;
+}
+
+#pagination ul {
+  padding: 0;
+}
+
+#pagination a {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: calc(12px + .8vh);
+  padding: 8px 32px;
+  position: relative;
+  text-decoration: none;
+}
+
+#pagination #previous {
+  background-color: #E45051;
+}
+
+#pagination ul, #pagination a, .title, .modes, #recentTimes, #topTimes {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
+
+
+/* ``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````*/
+@media (min-width: 1000px) {
+  .Header {
+    z-index: 5;
+  }
+
+  #loadingimage {
+    cursor: default;
+    height: auto;
+    width: 150px;
+  }
+
+  #wr_progression_button {
+    display: flex;
+  }
+
+  #maps {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+  }
+
+  #list_maps {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 70%;
+  }
+
+  #list_of_maps, #TitleMaps {
+    background-color: #191919;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+
+  #TitleMaps {
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+  }
+
+  #list_of_maps > .maps_page_list {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    margin: 5px;
+    min-width: 320px;
+    padding-left: 20px;
+    width: 30%;
+  }
+
+  .maps_page_list span {
+    align-self: flex-start;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+  }
+
+  #loading {
+    align-items: center;
+    align-self: center;
+    background-color: #191919;
+    bottom:0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    left:0;
+    opacity: 1;
+    position: fixed;
+    right:0;
+    top: 154px;
+    transition: opacity 0.1s linear;
+    z-index: 1;
+  }
+
+  #errorloading {
+    align-items: center;
+    align-self: center;
+    background-color: #191919;
+    color: white;
+    display: none;
+    height: 600px;
+    justify-content: center;
+    opacity: 1;
+    position: absolute;
+    transition: opacity 0.1s linear;
+    width: 1000px;
+    z-index: 1;
+  }
+
+  /* Navbar */
+  .navbar {
+    display: flex;
+    margin: 0;
+  }
+
+  .btn {
+    color: #E45051;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    margin: 5px;
+    outline: none;
+  }
+
+  ul.breadcrumbs {
+    /* This makes it so you cannot highlight the navbar */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    /* CSS */
+    background-color: #191919;
+    font-family: 'Roboto', sans-serif;
+    list-style: none;
+    margin: 0;
+    padding-top: 8px;
+    padding-left: 0px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 100%;
+    z-index: 2; /* This is used so that the navbar is above the title */
+  }
+  ul.breadcrumbs li+li:before {
+    color: grey;
+    content: "/";
+    display: inline;
+    padding: 8px;
+  }
+  .navbar li {
+    background-color: #191919;
+    color: #EEE;
+    display: inline;
+    text-align: center;
+  }
+  .navbar a {
+    color: #EEE;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding-left: 15px;
+    padding-right: 10px;
+  }
+
+  .navbar a:link, a:hover, a:visited {
+    text-decoration: none;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .banner {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    padding: 0px;
+    z-index: 2;
+  }
+
+  .title {
+    color: #DDDFD4;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 42px;
+    justify-content: center;
+  }
+
+  .modes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  #displayTimes {
+    background-color: transparent;
+    width: 50%;
+  }
+
+  #TableTimes {
+    font-size: 15px;
+  }
+
+  #recentTimes, #topTimes {
+    font-size: 16px;
+    height: 600px;
+    width: 550px;
+  }
+
+  #recentTimes img::after {
+    font-size: 12px;
+  }
+
+  #recentTimes span {
+    background-color: transparent;
+    font-size: calc(12px + 0.1vw);
+    padding: 5px;
+    padding-left: 9px;
+  }
+
+  #topTimes img::after {
+    font-size: 12px;
+  }
+
+  #topTimes span {
+    background-color: transparent;
+    font-size: calc(12px + 0.1vw);
+    padding: 5px;
+    padding-left: 9px;
+  }
+
+  #displayMapTimes {
+    margin: auto;
+    min-height: 50vh;
+    min-width: 1300px;
+    padding-bottom: 50px;
+  }
+
+  #recentMapTimes {
+    display: flex;
+    font-size: calc(12px + .5vh);
+  }
+
+  #recentMapTimes h2 {
+    font-size: 20px;
+  }
+
+  #topMapTimes {
+    font-size: calc(12px + .5vh);
+    width: 50%;
+  }
+
+  #topMapTimes h2 {
+    font-size: 20px;
+  }
+
+  #displayMapData {
+    min-width: 1300px;
+    width: 90%;
+  }
+
+  #MapData-Text {
+    display: flex;
+  }
+
+  #Tables, #TablesLeaderBoards {
+    border-collapse: collapse;
+    color: white;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    justify-content: center;
+    width: auto;
+  }
+
+  #TablesLeaderBoards {
+    padding: 0px 50px 0px 50px;
+  }
+
+  #LeaderboardTables_points {
+    margin-right: 50px;
+  }
+
+  #Tables tbody tr td:nth-child(2) {
+    width: 100px;
+  }
+
+  #Tables tr, #TablesLeaderBoards tr {
+    color: #FFF;
+    padding: 0px;
+  }
+
+  #Tables tbody tr td, #TablesLeaderBoards tbody tr td {
+    padding: 8px;
+  }
+
+  #Tables tbody tr, #TablesLeaderBoards tbody tr{
+    border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
+  }
+
+  #Tables tbody tr:nth-child(even), #TablesLeaderBoards tbody tr:nth-child(even) {
+    background-color: rgba(0,0,0,0.2);
+  }
+
+  #Tables tbody tr:last-child, #TablesLeaderBoards tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  #Tables tbody tr td:first-child, #TablesLeaderBoards tbody tr td:first-child {
+    color: #E45051;
+    text-align: left;
+    width: 35px;
+  }
+
+  #Tables tbody tr td:nth-child(2), #TablesLeaderBoards tbody tr td:nth-child(2) {
+    text-align: left;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+  }
+
+  #Tables tbody tr td:nth-child(3), #TablesLeaderBoards tbody tr td:nth-child(3) {
+    text-align: right;
+    width: 95px;
+  }
+
+  #TablesLeaderBoards tbody tr td:nth-child(4) {
+    text-align: right;
+    width: 90px;
+  }
+
+  #Tables tbody tr td:nth-child(4) {
+    text-align: right;
+  }
+
+  #TableOverallTimes tbody tr td:nth-child(5) {
+    width: 30px;
+    text-align: right;
+  }
+
+  #TableOverallTimes tbody tr td:nth-child(6) {
+    color: #E45051;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0px 25px 0px 25px;
+    text-overflow: ellipsis;
+    width: 100px;
+    white-space: nowrap;
+  }
+
+  #TableProTimes tbody tr td:nth-child(5) {
+    color: #E45051;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0px 25px 0px 25px;
+    text-overflow: ellipsis;
+    width: 100px;
+    white-space: nowrap;
+  }
+
+  #Tables tbody tr td:last-child {
+    display: inline-block;
+    font-size: 85%;
+    min-width:120px;
+    text-align: right;
+    width: auto;
+  }
+
+  #TableTimes tr td:nth-child(2) {
+    border-bottom: none;
+    padding-left: 45px;
+  }
+
+  #TableTimes tr td:nth-child(3) {
+    border-bottom: none;
+    padding-left: 45px;
+  }
+
+  #TableTimes tbody tr td:last-child {
+    display: inline-block;
+  }
+
+  #TableTimes tr:last-child {
+    border-bottom: none;
+  }
+
+  #displayPlayerProfile {
+    height: auto;
+    min-height: 600px;
+  }
+
+  #displayPlayerTimes {
+    align-items: flex-start;
+    background-color: #191919;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Montserrat', sans-serif;
+    height: 790px;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+    width: 1250px;
+  }
+
+  #NoPlayer {
+    align-items: flex-start;
+    background-color: #191919;
+    color: white;
+    display: none;
+    flex-direction: row;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    height: 790px;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+    width: 1250px;
+  }
+
+  #TablesPlayer {
+    font-size: 15px;
+    padding-top: 7px;
+    width: 1150px;
+  }
+
+  #TablesPlayer tbody tr td:nth-child(1) {
+    width: 250px;
+  }
+
+  #TablesPlayer tbody tr td:nth-child(4) {
+    display: inline-block;
+  }
+
+  #TablesPlayer tbody tr td:nth-child(5) {
+    width: 120px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #TablesPlayer tbody tr td:last-child {
+    width: 150px;
+  }
+
+  #mode-kz_vanilla-desktop:hover, #mode-kz_simple-desktop:hover, #mode-kz_timer-desktop:hover {
+    color: orange !important;
+    transition: 0.2s ease;
+  }
+
+  #playerBans {
+    display: none;
+  }
+
+  #playerBanInfo {
+    display: none;
+  }
+
+  #mode-kz_simple-desktop {
+    color: orange;
+  }
+
+  #playerBans {
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+  }
+
+  #TablesBans, #playerBanInfo {
+    background-color: #191919;
+    color: white;
+    display: none;
+  }
+
+  #gokz_api_bans_title, #gokz_api_player_ban_title {
+    display: flex;
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  #gokz_api_player_ban_title {
+    min-width: 500px;
+    width: auto;
+  }
+
+  #gokz_api_bans td, #gokz_api_player_ban td {
+    padding: 8px;
+  }
+
+  #gokz_api_bans tr {
+    border-bottom: 1px solid grey;
+  }
+
+  #gokz_api_bans tr:last-child {
+    border-bottom: none;
+  }
+
+  #gokz_api_bans td:nth-child(3), #gokz_api_player_ban td:nth-child(3) {
+    font-size: 13px;
+    width: 650px;
+  }
+
+  #TableTitle td:nth-child(3) {
+    font-size: 16px;
+  }
+
+  .main {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .map_div {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    height: 84px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  .map_div span {
+    padding-left: 1vh;
+    text-align: left;
+    width: 32vh;
+  }
+
+  .map_div div {
+    color: #E45051;
+    display: inline-block;
+  }
+
+  .map_div img {
+    align-self: center;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px;
+    height: 84px;
+    position: relative;
+    width: 150px;
+  }
+
+  .map_div img::after {
+    line-height: 5;
+  }
+
+  #pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 65px;
+  }
+
+  #previous, #next {
+    display: inline-block;
+  }
+
+  #pagination ul {
+    padding: 0;
+  }
+
+  #pagination a {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(12px + .8vh);
+    padding: 8px 32px;
+    text-decoration: none;
+  }
+
+  input[type=search] {
+    min-width: 220px;
+  }
+
+  input[type=search]:focus {
+    outline: none;
+  }
+}
+
+/**********************************************************************************************************************************************/
+
+@media (min-width: 1921px) {
+  #recentTimes, #topTimes {
+    height: 100%;
+    width: 100%;
+  }
+
+  #list_maps {
+    width: 50%;
+  }
+
+  #recentMapTimes, #topMapTimes {
+    display: flex;
+    width: 1000px;
+  }
+
+  #displayMapTimes {
+    height: auto;
+    min-height: 840px;
+    padding-bottom: 50px;
+    width: 75%;
+  }
+
+  #displayMapData {
+    width: 75%;
+  }
+
+  #Tables {
+    font-size: 16px;
+    height: auto;
+  }
+
+  #TablesPlayer {
+    font-size: 15px;
+    width: 1150px;
+  }
+
+  #displayPlayerProfile {
+    height: auto;
+    min-height: 600px;
+    width: 75%;
+  }
+
+  .map_div {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    height: 112px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+  }
+
+  .map_div img {
+    align-self: center;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px;
+    height: 84px;
+    position: relative;
+    width: 150px;
+  }
+
+  .map_div img::after {
+    line-height: 7;
+  }
+}
