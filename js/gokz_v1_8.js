@@ -457,7 +457,7 @@ function getPlayerPoints(url) {
 }
 
 function getPlayerInfo_table_globals_only(postTimes) {
-  $("#TableTimes td").remove();
+  $("#TableTimes tr").remove();
   let row = document.getElementById("TableTimes").insertRow(-1);
   let cell1 = row.insertCell(0);
   let cell2 = row.insertCell(1);
@@ -515,7 +515,7 @@ function getPlayerInfo_table_globals_only(postTimes) {
 }
 
 function getPlayerInfo_table(postTimes) {
-  $("#TableTimes td").remove();
+  $("#TableTimes tr").remove();
   let row = document.getElementById("TableTimes").insertRow(-1);
   let cell1 = row.insertCell(0);
   let cell2 = row.insertCell(1);
