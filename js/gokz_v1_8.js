@@ -451,7 +451,7 @@ function getPlayerPoints(url) {
     document.getElementById("playerPoints").innerHTML = numberWithCommas(player_points) + " Points";
     enableScrolling();
     if (document.getElementById("playerPoints").style.display === "none") {
-      document.getElementById("playerPoints").style.display = "flex";
+      document.getElementById("playerPoints").style.display = "block";
     }
   })
 }
@@ -1433,7 +1433,7 @@ function recentAndLatest() {
   currentpage = 0;
   document.getElementById("previous").style.background = "#E45051";
   document.getElementById("next").style.background = "#212121";
-  //window.history.pushState('home', 'Home', '/kreedz/gokzstats_dev.html');
+  //window.history.pushState('home', 'Home', '/kreedz/gokzstats.html');
   window.history.pushState('home', 'Home', '/');
   getRecent();
   getLatest();
