@@ -8,12 +8,12 @@ Global API support
 
 Maps leaderboards
 
-World Record leaderboards
+World record leaderboards
 
 Point leaderboards
 
-Player Profiles
+Player profiles
 
-Maps Page
+Maps page
 
-Bans Page
+Bans page
