@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GOKZ Stats</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="A website for GOKZ Stats made to work with the CSGO Kreedz API - kztimerglobal.com" content="GOKZ Stats">
+  <meta name="Jacob Barrett" content="www.jacobwbarrett.com">
+  <meta name="Description" content="A stats website for the 10,000+ users of the CS:GO Kreedz community. Leaderboards, Records, Profiles, and more.">
+  <link rel="icon" type="image/png" href="../Pictures/LogoSpace.png">
+  <link rel="stylesheet" href="../css/gokz_v1_9.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Roboto:700" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102102591-3"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-102102591-3');
+  </script>
+
+</head>
+
+<body>
+
+  <div class="Header">
+
+    <div class="navbar">
+      <ul class="breadcrumbs">
+        <li><a href="https://www.gokzstats.com/">Home</a></li>
+        <li><a href="https://jacobwbarrett.com/">Projects</a></li>
+        <li><a onclick="showLeaderboards();">Leaderboards</a></li>
+        <li><a onclick="showMaps();">Maps</a></li>
+        <li><a onclick="showBans();">Bans</a></li>
+        <li><a href="https://jacobwbarrett.com/">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="banner">
+      <div class="mobile-nav">
+        <img class="mobile-nav-logo" src="../Pictures/LogoSpace.png"></img>
+      </div>
+      <h1 class="title">GOKZ Stats</h1>
+    </div>
+
+    <div class="modes">
+      <button style="cursor: pointer" id="mode-kz_vanilla-desktop" onclick="toggle(this);" class="btn">Vanilla</button>
+      <button style="cursor: pointer" id="mode-kz_simple-desktop" onclick="toggle(this);" class="btn">SimpleKZ</button>
+      <button style="cursor: pointer" id="mode-kz_timer-desktop" onclick="toggle(this);" class="btn">KZTimer</button>
+    </div>
+
+    <div id="searchBar">
+      <input contenteditable="true" type="search" id="searchMap" placeholder="Search"></input>
+    </div>
+  </div>
+
+  <div id="loading"><img id="loadingimage" src="https://d2u7y93d5eagqt.cloudfront.net/loading.svg"></img></div>
+
+  <div id="displayTimes">
+    <div id="errorloading">An error occured.</div>
+    <div id="recentTimes">
+      <h2 style="color: white;">Recent Times</h2>
+    </div>
+
+    <div id="topTimes">
+      <h2 style="color: white;">World Records</h2>
+    </div>
+  </div>
+
+  <div id="displayMapData">
+    <div id="MapData-parent">
+      <img id="MapData-Image">
+      <div id="MapData-Text">
+        <div id="MapData-Name"></div>
+        <div id="MapData-ProWR"></div>
+        <div id="MapData-TPWR"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="displayMapTimes">
+    <div id="recentMapTimes">
+      <h2 id="TP_title" style="color: white;">TP</h2>
+      <div id="Tables">
+        <table cellspacing="0" id="TableOverallTimes"></table>
+      </div>
+    </div>
+
+    <div id="topMapTimes">
+      <h2 id="Pro_title" style="color: white;">Pro</h2>
+      <div id="Tables">
+        <table cellspacing="0" id="TableProTimes"></table>
+      </div>
+    </div>
+  </div>
+
+  <div id="displayPlayerProfile">
+    <div id="displayPlayerTimes">
+      <div id="playerInfo">
+        <a id="playerName"></a>
+        <a id="playerPoints"></a>
+        <div id='playerProTimes'></div>
+        <div id="showTimes"></div>
+        <div id='showGlobalTimes'></div>
+        <div id='searchPlayerInfo'><input contenteditable='true' type='search' id="searchPlayerInfo_input" placeholder='Map Search'></input></div>
+      </div>
+      <div id="TablesPlayer">
+        <table cellspacing="0" id="TableTimes">
+        </table>
+      </div>
+    </div>
+    <div id="NoPlayer">No Player Found</div>
+  </div>
+
+  <div id="maps">
+    <div id="list_maps">
+      <h2 id="TitleMaps" style="color: white;">Maps</h2>
+      <div id="list_of_maps">
+      </div>
+    </div>
+  </div>
+
+  <div id="playerLeaderboards">
+    <div id="proPlayerLeaderboards">
+      <div id="LeaderboardHeader">
+        <h2 id="TitleLeaderboards" style="color: white;">Top 20 Leaderboards</h2>
+        <button id="LeaderboardMode"><h2>Pro</h2></button>
+      </div>
+      <div id="LeaderboardOptions">
+        <button id="LeaderBoardOptions_tech">TECH</button>
+        <button id="LeaderBoardOptions_bhop">BHOP</button>
+        <button id="LeaderBoardOptions_overall">OVERALL</button>
+        <button id="LeaderBoardOptions_climb">CLIMB</button>
+        <button id="LeaderBoardOptions_combo">COMBO</button>
+      </div>
+      <div id="TablesLeaderBoards">
+        <table cellspacing="0" id="LeaderboardTables_points"><caption id="LeaderboardTables_points_title">Points Leaderboard</caption></table>
+        <table cellspacing="0" id="LeaderboardTables_records"><caption id="LeaderboardTables_records_title">Records Leaderboard</caption></table>
+      </div>
+    </div>
+
+    <div id="button_container_leaderboards">
+      <button id="show_more_leaderboards_button">Show More</button>
+    </div>
+  </div>
+
+  <div id="playerBans">
+    <div id="TablesBans">
+      <table cellspacing="0" id="gokz_api_bans"><caption id="gokz_api_bans_title">API Bans - Most Recent</caption></table>
+    </div>
+    <div id="playerBanInfo">
+      <table cellspacing="0" id="gokz_api_player_ban"><caption id="gokz_api_player_ban_title"></caption></table>
+    </div>
+  </div>
+
+  <div id="pagination">
+    <ul>
+      <a id="previous">◄</a>
+      <a id="next">►</a>
+    </ul>
+  </div>
+
+  <div id="button_container">
+    <button id="wr_progression_button">Show WR Progression</button>
+  </div>
+
+  <div id="graph_container">
+    <div id="map_graph" style="width:1200px;height:550px;"></div>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/biginteger.js"></script>
+  <script type="text/javascript" src="../js/gokz_v1_8.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</body>
+</html>
