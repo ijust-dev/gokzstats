@@ -410,11 +410,6 @@ table {
 
 #TablesPlayer tbody tr td:nth-child(4) {
   display: none;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100px;
 }
 
 #TablesPlayer tbody tr td:nth-child(5) {
@@ -1027,16 +1022,12 @@ input[type=search]::-webkit-search-cancel-button {
 
   #TableTimes tr td:nth-child(2) {
     border-bottom: none;
-    padding-left: 45px;
+    width: 85px;
   }
 
   #TableTimes tr td:nth-child(3) {
     border-bottom: none;
-    padding-left: 45px;
-  }
-
-  #TableTimes tbody tr td:last-child {
-    display: inline-block;
+    width: 80px;
   }
 
   #TableTimes tr:last-child {
@@ -1086,16 +1077,23 @@ input[type=search]::-webkit-search-cancel-button {
 
   #TablesPlayer tbody tr td:nth-child(4) {
     display: inline-block;
+    width: 55px;
+    text-align: right;
   }
 
   #TablesPlayer tbody tr td:nth-child(5) {
-    width: 120px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: 130px;
   }
 
   #TablesPlayer tbody tr td:last-child {
-    width: 150px;
+    display: inline-block;
+    text-align: right;
+    width: 190px;
   }
 
   #mode-kz_vanilla-desktop:hover, #mode-kz_simple-desktop:hover, #mode-kz_timer-desktop:hover {
