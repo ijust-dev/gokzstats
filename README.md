@@ -1,5 +1,6 @@
 # gokzstats
 Stats website for the CSGO:KZ Community
+
 https://gokzstats.com
 
 # Current Features
