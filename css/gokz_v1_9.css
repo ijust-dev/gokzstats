@@ -409,11 +409,12 @@ table {
 }
 
 #TablesPlayer tbody tr td:nth-child(4) {
-  display: none;
+  display: inline-block;
+  text-align: right;
 }
 
 #TablesPlayer tbody tr td:nth-child(5) {
-  text-align: right;
+  display: none;
 }
 
 #TableTitle td {
