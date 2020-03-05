@@ -299,10 +299,8 @@ function getsMapsSearch(search) {
 
   document.getElementById("TitleMaps").innerHTML = "Maps that include: " + document.getElementById("searchMap").value;
   document.getElementById("searchMap").value = "";
-  document.getElementById("playerName").style.display = "none";
   document.getElementById("displayTimes").style.display = "none";
   document.getElementById("displayMapTimes").style.display = "none";
-  document.getElementById("playerName").style.display = "flex";
   document.getElementById("pagination").style.display = "none";
   document.getElementById("pagination").style.opacity = 1;
   document.getElementById("displayPlayerProfile").style.display = "none";
@@ -726,6 +724,7 @@ function getPlayerInfo(url) {
   disableScrolling();
   currentpage = 0;
   current_has_teleports = "false";
+  document.getElementById("playerAvatar").innerHTML = "";
   document.getElementById("playerName").innerHTML = "";
   document.getElementById("playerPoints").style.display = "none";
   document.getElementById("displayTimes").style.display = "none";
@@ -805,6 +804,16 @@ function getPlayerInfo(url) {
       } else {
         steamBigInt = BigInteger('76561197960265728');
       }
+
+      // Cloudflare Worker as a CORS proxy. Using until a functional backend is in place.
+      fetch("https://gokzstats.jacobwbarrett.workers.dev/?http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=A4EA5418B4405A51E6A97415C408D3BE&steamids=" + steam64.add(steamBigInt).toString())
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        document.getElementById("playerAvatar").innerHTML = "<img src=" + data.response.players[0].avatarfull + "></img>";
+      });
+
       document.getElementById("playerName").setAttribute("href", "https://steamcommunity.com/profiles/" + steam64.add(steamBigInt).toString());
       document.getElementById("playerName").setAttribute("target", "_blank");
       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
@@ -880,7 +889,6 @@ function getPlayerInfo(url) {
   document.getElementById("playerName").style.display = "flex";
   document.getElementById("displayTimes").style.display = "none";
   document.getElementById("displayMapTimes").style.display = "none";
-  document.getElementById("playerName").style.display = "flex";
   document.getElementById("pagination").style.display = "flex";
   document.getElementById("pagination").style.opacity = 1;
   document.getElementById("displayPlayerProfile").style.display = "flex";
@@ -1065,7 +1073,6 @@ function loadMap(map) {
   document.getElementById("loading").style.zIndex = 1;
   document.getElementById("previous").style.background = "#E45051";
   document.getElementById("next").style.background = "#212121";
-  document.getElementById("playerName").style.display = "none";
   document.getElementById("maps").style.display = "none";
   document.getElementById("displayPlayerProfile").style.display = "none";
   document.getElementById("playerLeaderboards").style.display = "none";
@@ -1460,7 +1467,7 @@ function recentAndLatest() {
   currentpage = 0;
   document.getElementById("previous").style.background = "#E45051";
   document.getElementById("next").style.background = "#212121";
-  //window.history.pushState('home', 'Home', '/kreedz/gokzstats.html');
+  //window.history.pushState('home', 'Home', '/kreedz/gokzstats_dev.html');
   window.history.pushState('home', 'Home', '/');
   getRecent();
   getLatest();
@@ -1711,7 +1718,6 @@ function showBans() {
   document.getElementById("playerLeaderboards").style.display = "none";
   document.getElementById("displayMapTimes").style.display = "none";
   document.getElementById("displayTimes").style.display = "none";
-  document.getElementById("playerName").style.display = "none";
   document.getElementById("displayPlayerProfile").style.display = "none";
   document.getElementById("pagination").style.display = "none";
   document.getElementById("graph_container").style.display = "none";
@@ -1727,7 +1733,6 @@ function showMaps() {
   document.getElementById("playerLeaderboards").style.display = "none";
   document.getElementById("displayMapTimes").style.display = "none";
   document.getElementById("displayTimes").style.display = "none";
-  document.getElementById("playerName").style.display = "none";
   document.getElementById("displayPlayerProfile").style.display = "none";
   document.getElementById("maps").style.display = "flex";
   document.getElementById("pagination").style.display = "flex";
@@ -1836,7 +1841,6 @@ window.onload = function() {
     if (!this.value && document.getElementById("displayMapTimes").style.display === "flex") {
       document.getElementById("displayMapTimes").style.display = "none";
       document.getElementById("displayTimes").style.display = "flex";
-      document.getElementById("playerName").style.display = "none";
       document.getElementById("displayPlayerProfile").style.display = "none";
       document.getElementById("playerLeaderboards").style.display = "none";
       // This deletes every .map_div on the page
