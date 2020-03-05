@@ -141,7 +141,7 @@ function timeConvert(time) {
   }
   else if (time < 60) {
     seconds = Math.floor(time % 60.00);
-    return str_pad_left(seconds,'0',2)+"."+ms[1].substr(0,2);
+    return str_pad_left(seconds,' ',2)+"."+ms[1].substr(0,2);
   }
   else {
     minutes = Math.floor(time % 3600.00 /60.00);
@@ -820,6 +820,9 @@ function getPlayerInfo(url) {
           if (maplist[i].name.includes("skz_") && currentmode !== "kz_simple") {
             continue;
           }
+          if (maplist[i].name.includes("vnl_") && currentmode !== "kz_vanilla") {
+            continue;
+          }
           fatarray.push(maplist[i].name);
           uniquemaplist++;
         }
@@ -830,6 +833,9 @@ function getPlayerInfo(url) {
         let uniquemaplist = 0;
         for (i=0;i<maplist.length;i++) {
           if (maplist[i].name.includes("skz_") && currentmode !== "kz_simple") {
+            continue;
+          }
+          if (maplist[i].name.includes("vnl_") && currentmode !== "kz_vanilla") {
             continue;
           }
           uniquemaplist++;
