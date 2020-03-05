@@ -325,6 +325,12 @@ table {
   justify-content: center;
 }
 
+#playerInfo #playerAvatar img {
+  width: 125px;
+  height: 125px;
+  cursor: default;
+}
+
 #playerInfo #playerPoints {
   font-size: 18px;
   padding: 5px 0px 5px 0px;
