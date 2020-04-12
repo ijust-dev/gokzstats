@@ -47,6 +47,8 @@ let currentpage = 0;
 let currentmode;
 let currentmap;
 let currenttype;
+let uniquemaplist;
+
 
 let state = {
   buttonText: "Initial text"
@@ -413,6 +415,7 @@ function getBans(offset) {
     cell2.innerHTML = "Ban Type";
     cell3.innerHTML = "Stats";
     cell4.innerHTML = "Expires on";
+
     for (i=0;i<20;i++) {
       let row = document.getElementById("gokz_api_bans").insertRow(-1);
       let cell1 = row.insertCell(0);
@@ -422,7 +425,18 @@ function getBans(offset) {
       let cell5 = row.insertCell(4);
 
       row.id = bans[i].steam_id;
-      cell1.innerHTML = bans[i].steam_id;
+
+      steamid = (bans[i].steam_id).split(":");
+      steam64 = BigInteger(steamid[2]);
+      steam64 = BigInteger(steam64.multiply(2).toString());
+      if (steamid[1] === "1") {
+        steamBigInt = BigInteger('76561197960265729');
+      } else {
+        steamBigInt = BigInteger('76561197960265728');
+      }
+      let profileUrl = "http://steamcommunity.com/profiles/" + steam64.add(steamBigInt).toString();
+
+      cell1.innerHTML = "<a style='color:white; text-decoration:none' target='_blank' href=" + profileUrl + ">" + bans[i].steam_id + "</a>";
       cell2.innerHTML = bans[i].ban_type;
       cell3.innerHTML = bans[i].stats;
       cell4.innerHTML = dateConvert(bans[i].expires_on);
@@ -433,7 +447,52 @@ function getBans(offset) {
   });
 }
 
-function getPlayerPoints(url) {
+function getRank(points, currentmode) {
+
+  // Point adjustment for different modes, as # of maps beatable on vanills is unknown as of 4-10-2020
+  let modePointAdjust;
+  let maxGlobalPoints;
+  if (currentmode === "kz_vanilla") {
+    modePointAdjust = 0.5;
+    maxGlobalPoints = 1000*uniquemaplist;
+  }
+  else if (currentmode === "kz_simple") {
+    modePointAdjust = 1.0;
+    maxGlobalPoints = 1000*uniquemaplist;
+  }
+  else if (currentmode === "kz_timer") {
+    modePointAdjust = 1.0;
+    maxGlobalPoints = 1000*uniquemaplist;
+  }
+
+  // Title Calculator for Player Profile
+  if (points < maxGlobalPoints*modePointAdjust*0.02) {
+    return "New";
+  }
+  else if (points < maxGlobalPoints*modePointAdjust*0.05) {
+    return "Trainee";
+  }
+  else if (points < maxGlobalPoints*modePointAdjust*0.15) {
+    return "Casual";
+  }
+  else if (points < maxGlobalPoints*modePointAdjust*0.25) {
+    return "Regular";
+  }
+  else if (points < maxGlobalPoints*modePointAdjust*0.40) {
+    return "Skilled";
+  }
+  else if (points < maxGlobalPoints*modePointAdjust*0.65) {
+    return "Expert";
+  }
+  else if (points < maxGlobalPoints*modePointAdjust*0.85) {
+    return "Semi-Pro";
+  }
+  else if (points < maxGlobalPoints*modePointAdjust*1.00) {
+    return "Pro";
+  }
+}
+
+function getPlayerPointsAndRanks(url) {
   let player_points = 0;
   fetch(url)
   .then(function(response) {
@@ -446,6 +505,7 @@ function getPlayerPoints(url) {
     else {
       player_points = player[0].points;
     }
+    document.getElementById("playerRanks").innerHTML = getRank(player_points, currentmode);
     document.getElementById("playerPoints").innerHTML = numberWithCommas(player_points) + " Points";
     enableScrolling();
     if (document.getElementById("playerPoints").style.display === "none") {
@@ -821,7 +881,7 @@ function getPlayerInfo(url) {
       }
       let fatarray = [];
       if (url.includes("teleports=true")) {
-        let uniquemaplist = 0;
+        uniquemaplist = 0;
         for (i=0;i<maplist.length;i++) {
           if (maplist[i].name.includes("kzpro")) {
             continue;
@@ -839,7 +899,7 @@ function getPlayerInfo(url) {
         document.getElementById("showTimes").innerHTML = "Show Pro Times";
       }
       else {
-        let uniquemaplist = 0;
+        uniquemaplist = 0;
         for (i=0;i<maplist.length;i++) {
           if (maplist[i].name.includes("skz_") && currentmode !== "kz_simple") {
             continue;
@@ -872,7 +932,7 @@ function getPlayerInfo(url) {
       else if (currentmode === "kz_vanilla") {
         map_mode = 202;
       }
-      getPlayerPoints("https://kztimerglobal.com/api/v1.0/player_ranks?steamid64s=" + steam64.add(steamBigInt).toString() + "&stages=0&mode_ids=" + map_mode + "&has_teleports=" + current_has_teleports + "&finishes_greater_than=0");
+      getPlayerPointsAndRanks("https://kztimerglobal.com/api/v1.0/player_ranks?steamid64s=" + steam64.add(steamBigInt).toString() + "&stages=0&mode_ids=" + map_mode + "&has_teleports=" + current_has_teleports + "&finishes_greater_than=0");
 
     },
     timeout: 8000,
@@ -1723,7 +1783,7 @@ function showBans() {
   document.getElementById("graph_container").style.display = "none";
   document.getElementById("button_container").style.display = "none";
   document.getElementById("wr_progression_button").style.display = "none";
-  getBans();
+  getBans(0);
 }
 
 function showMaps() {
