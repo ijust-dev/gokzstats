@@ -829,21 +829,17 @@ function getPlayerInfo(url) {
         document.getElementById("NoPlayer").style.display = "flex";
         return;
       }
-      else if (url.includes("player_name") && !link.toLowerCase().includes(playerInfo[0].player_name)) {
+      else if (url.includes("player_name") && playerInfo[0].player_name === null) {
+        document.getElementById("displayPlayerTimes").style.display = "none";
+        document.getElementById("NoPlayer").style.display = "flex";
+        return;
+      }
+      else if (url.includes("player_name") && !url.toLowerCase().includes(playerInfo[0].player_name.toLowerCase())) {
         document.getElementById("displayPlayerTimes").style.display = "none";
         document.getElementById("NoPlayer").style.display = "flex";
         return;
       }
 
-      if (playerInfo.length === 0) {
-        $("#TableTimes tr").remove();
-        let row = document.getElementById("TableTimes").insertRow(-1);
-        let cell1 = row.insertCell(0);
-        cell1.innerHTML = "No Records Found";
-        document.getElementById("playerName").innerHTML = "No Player Found";
-        document.getElementById("playerProTimes").innerHTML = "No Times";
-        return;
-      }
       window.history.pushState('map', 'Map', '/?name=' + playerInfo[0].steam_id + '&mode=' + currentmode);
       document.getElementById("searchMap").value = playerInfo[0].steam_id;
 
@@ -940,7 +936,7 @@ function getPlayerInfo(url) {
       getPlayerPointsAndRanks("https://kztimerglobal.com/api/v1.0/player_ranks?steamid64s=" + steam64.add(steamBigInt).toString() + "&stages=0&mode_ids=" + map_mode + "&has_teleports=" + current_has_teleports + "&finishes_greater_than=0");
 
     },
-    timeout: 8000,
+    timeout: 12000,
     error: function(jqXHR, textStatus, errorThrown) {
       if(textStatus==="timeout") {
         console.log("Request has timed out.");
