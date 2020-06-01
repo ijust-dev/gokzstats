@@ -824,7 +824,12 @@ function getPlayerInfo(url) {
       document.getElementById("loading").style.opacity = 0;
       document.getElementById("loading").style.zIndex = -1;
 
-      if (url.includes("player_name") && !url.toLowerCase().includes(playerInfo[0].player_name.toLowerCase())) {
+      if (url.includes("player_name") && playerInfo.length === 0) {
+        document.getElementById("displayPlayerTimes").style.display = "none";
+        document.getElementById("NoPlayer").style.display = "flex";
+        return;
+      }
+      else if (url.includes("player_name") && !link.toLowerCase().includes(playerInfo[0].player_name)) {
         document.getElementById("displayPlayerTimes").style.display = "none";
         document.getElementById("NoPlayer").style.display = "flex";
         return;
