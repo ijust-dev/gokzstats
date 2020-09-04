@@ -8,7 +8,7 @@
   <meta name="Jacob Barrett" content="www.jacobwbarrett.com">
   <meta name="Description" content="A stats website for the 10,000+ users of the CS:GO Kreedz community. Leaderboards, Records, Profiles, and more.">
   <link rel="icon" type="image/png" href="../Pictures/LogoSpace.png">
-  <link rel="stylesheet" href="../css/gokz_v1_9.css">
+  <link rel="stylesheet" href="../css/gokz_v2_0_min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Roboto:700" rel="stylesheet">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102102591-3"></script>
@@ -31,15 +31,14 @@
         <li><a onclick="showMaps();">Maps</a></li>
         <li><a onclick="showLeaderboards();">Leaderboards</a></li>
         <li><a onclick="showBans();">Bans</a></li>
+        <li><a onclick="showSettings();">Settings</a></li>
         <li><a href="https://jacobwbarrett.com/">Contact</a></li>
       </ul>
     </div>
 
     <div class="banner">
-      <div class="mobile-nav">
-        <img class="mobile-nav-logo" src="../Pictures/LogoSpace.png"></img>
-      </div>
-      <h1 class="title"><a id="title-link" href="https://gokzstats.com/">GOKZ Stats</a></h1>
+      <img id="mobile_menu_icon" src='../Pictures/mobile_menu_icon.png'></img>
+      <h1 class="title"><a id="title-link" href="https://gokzstats.com">GOKZ Stats</a></h1>
     </div>
 
     <div class="modes">
@@ -55,14 +54,42 @@
 
   <div id="loading"><img id="loadingimage" src="https://d2u7y93d5eagqt.cloudfront.net/loading.svg"></img></div>
 
+  <div id="MobileMenu">
+    <div id="MobileOptions">
+        <div id="MobileLeaderboardsLink" onclick="showLeaderboards(); document.getElementById('MobileMenu').style.display = 'none';">Leaderboards</div>
+        <div id="MobileMapsLink" onclick="showMaps(); document.getElementById('MobileMenu').style.display = 'none';">Maps</div>
+        <br>
+        <div id="Options">
+          Custom Settings:
+          <br>
+          <br>
+          <label for="primary_font_color">Primary Font Color:</label>
+          <input id="primary_font_color" name="Color Picker" type="color" value="#FFA680"/>
+          <br>
+          <label for="secondary_font_color">Secondary Font Color:</label>
+          <input id="secondary_font_color" name="Color Picker" type="color" value="#FFFFFF"/>
+          <br>
+          <label for="primary_bg_color">Primary Background Color:</label>
+          <input id="primary_bg_color" name="Color Picker" type="color" value="#121212"/>
+          <br>
+          <label for="secondary_bg_color">Secondary Background Color:</label>
+          <input id="secondary_bg_color" name="Color Picker" type="color" value="#424242"/>
+          <br>
+          <br>
+          <input id="custom_settings_submit" type="submit" value="Save">
+          <input id="custom_settings_reset" type="submit" value="Reset">
+        </div>
+    </div>
+  </div>
+
   <div id="displayTimes">
     <div id="errorloading">An error occured.</div>
     <div id="recentTimes">
-      <h2 style="color: white;">Recent Times</h2>
+      <h2 id="recent-times-heading">Recent Times</h2>
     </div>
 
     <div id="topTimes">
-      <h2 style="color: white;">World Records</h2>
+      <h2 id="top-times-heading">World Records</h2>
     </div>
   </div>
 
@@ -79,14 +106,14 @@
 
   <div id="displayMapTimes">
     <div id="recentMapTimes">
-      <h2 id="TP_title" style="color: white;">TP</h2>
+      <h2 class="type_title" id="TP_title">TP</h2>
       <div id="Tables">
         <table cellspacing="0" id="TableOverallTimes"></table>
       </div>
     </div>
 
     <div id="topMapTimes">
-      <h2 id="Pro_title" style="color: white;">Pro</h2>
+      <h2 class="type_title" id="Pro_title">Pro</h2>
       <div id="Tables">
         <table cellspacing="0" id="TableProTimes"></table>
       </div>
@@ -110,12 +137,12 @@
         </table>
       </div>
     </div>
-    <div id="NoPlayer">No Player Found</div>
+    <div id="NoPlayer">No Player Found.</div>
   </div>
 
   <div id="maps">
     <div id="list_maps">
-      <h2 id="TitleMaps" style="color: white;">Maps</h2>
+      <h2 id="TitleMaps">Maps</h2>
       <div id="list_of_maps">
       </div>
     </div>
@@ -124,7 +151,8 @@
   <div id="playerLeaderboards">
     <div id="proPlayerLeaderboards">
       <div id="LeaderboardHeader">
-        <h2 id="TitleLeaderboards" style="color: white;">Top 20 Leaderboards</h2>
+        <h2 id="TitleLeaderboards">Top 20 Leaderboards</h2>
+        <div id="MobileLeaderboardsMode"></div>
         <button id="LeaderboardMode"><h2>Pro</h2></button>
       </div>
       <div id="LeaderboardOptions">
@@ -135,8 +163,8 @@
         <button id="LeaderBoardOptions_combo">COMBO</button>
       </div>
       <div id="TablesLeaderBoards">
-        <table cellspacing="0" id="LeaderboardTables_points"><caption id="LeaderboardTables_points_title">Points Leaderboard</caption></table>
-        <table cellspacing="0" id="LeaderboardTables_records"><caption id="LeaderboardTables_records_title">Records Leaderboard</caption></table>
+        <table cellspacing="0" id="LeaderboardTables_points"><caption class="LeaderboardTables_titles" id="LeaderboardTables_points_title">Points</caption></table>
+        <table cellspacing="0" id="LeaderboardTables_records"><caption class="LeaderboardTables_titles" id="LeaderboardTables_records_title">Records</caption></table>
       </div>
     </div>
 
@@ -169,10 +197,9 @@
     <div id="map_graph" style="width:1200px;height:550px;"></div>
   </div>
 
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="../js/biginteger.js"></script>
-  <script type="text/javascript" src="../js/gokz_v1_8.js"></script>
+  <script type="text/javascript" src="../js/gokz_v2_0_3_min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </body>
 </html>
