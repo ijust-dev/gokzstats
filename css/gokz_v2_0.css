@@ -1,5 +1,12 @@
+:root {
+  --primary_text_color:         #FFA680; /* Default: #FFA6800 */
+  --secondary_text_color:       #FFF;    /* Default: #FFF */
+  --primary_background_color:   #121212; /* Default: #121212 */
+  --secondary_background_color: #424242; /* Default: #424242 */
+}
+
 html, body {
-  background-color: #424242;
+  background-color: var(--secondary_background_color);
   height: 100%;
   margin: 0;
 }
@@ -14,30 +21,102 @@ html, body {
 }
 
 #maps {
-  display: none;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+}
+
+#list_of_maps, #TitleMaps {
+  background-color: var(--primary_background_color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+#TitleMaps {
+  font-family: 'Montserrat', sans-serif;
+  justify-content: center;
+}
+
+#list_of_maps > .maps_page_list {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  height: 65px;
+  margin: 5px;
+  min-width: 320px;
+  padding-left: 5px;
+  width: 30%;
+}
+
+.maps_page_list span {
+  align-self: flex-start;
+  color: var(--secondary_text_color);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 
 #title-link {
-  color: #DDDFD4;
+  color: var(--secondary_text_color);
   text-decoration: none;
 }
 
+#MobileMenu {
+  background-color: var(--primary_background_color);
+  color: var(--secondary_text_color);
+  display: none;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+
+#MobileOptions div {
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+
+#primary_font_color {
+  margin-left: 83px;
+}
+
+#secondary_font_color {
+  margin-left: 63px;
+}
+
+#primary_bg_color {
+  margin-left: 25px;
+}
+
+#secondary_bg_color {
+  margin-left: 5px;
+}
+
 #wr_progression_button, #show_more_leaderboards_button {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   border: none;
-  color: #FFF;
+  color: var(--secondary_text_color);
   cursor: pointer;
   display: none;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   outline: none;
-  padding: 15px;
+  padding: 15px 10px 15px 10px;
 }
 
 #LeaderboardMode {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   border: none;
-  color: #FFF;
+  color: var(--secondary_text_color);
   cursor: pointer;
   display: flex;
   font-family: 'Montserrat', sans-serif;
@@ -67,21 +146,19 @@ html, body {
 }
 
 .title {
-  display: none;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  padding-right: 40px;
+  text-align: center;
+  width: 100%;
 }
 
 .mobile-nav {
-  color: #DDDFD4;
+  color: var(--secondary_text_color);
   display: flex;
   height: 34px;
-}
-
-.mobile-nav-logo {
-  height: 36px;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, 0%);
-  width: auto;
 }
 
 .main {
@@ -92,12 +169,10 @@ html, body {
 }
 
 .banner {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   display: flex;
   height: 40px;
   justify-content: flex-start;
-  padding: 3px 15px 3px 35px;
-  width: auto;
 }
 
 .Header {
@@ -107,7 +182,7 @@ html, body {
 .btn {
   background-color: transparent;
   border: none;
-  color: #E45051;
+  color: var(--primary_text_color);
   cursor: pointer;
   display: flex;
   letter-spacing: 1px;
@@ -121,8 +196,15 @@ td, a, img {
   cursor: pointer;
 }
 
+#mobile_menu_icon {
+  padding-top: 8px;
+  padding-left: 5px;
+  width: 35px;
+  height: 35px;
+}
+
 .modes {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   display: flex;
   justify-content: center;
 }
@@ -132,38 +214,23 @@ td, a, img {
   margin: auto;
   justify-content: center;
   position: relative;
-  width: 90%;
 }
 
-#recentTimes {
-  background-color: #191919;
-  border-right: 4px #E45051 inset;
+#recentTimes, #topTimes {
+  background-color: var(--primary_background_color);
+  color: var(--secondary_text_color);
   font-family: 'Montserrat', sans-serif;
-  font-size: calc(10px + .05vh);
-  height: auto;
+  height: 975px;
   text-align: center;
   width: 100%;
 }
 
-#recentTimes span {
-  font-size: calc(12px + .1vw);
-  overflow: hidden;
-  padding: 5px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+#recent-times-heading, #top-times-heading {
+  font-size: 18px;
 }
 
-#topTimes {
-  background-color: #191919;
-  font-family: 'Montserrat', sans-serif;
-  font-size: calc(10px + .05vh);
-  height: auto;
-  text-align: center;
-  width: 100%;
-}
-
-#topTimes span {
-  font-size: calc(12px + .1vh);
+#topTimes span, #recentTimes span {
+  font-size: 15px;
   overflow: hidden;
   padding: 5px;
   padding-bottom: 25px;
@@ -171,13 +238,18 @@ td, a, img {
   white-space: nowrap;
 }
 
+.type_title {
+  color: var(--secondary_text_color);
+  font-weight: normal;
+  font-size: 18px;
+}
+
 #displayMapData {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   display: none;
   height: 135px;
   justify-content: center;
   margin: auto;
-  width: 90%;
 }
 
 #MapData-parent {
@@ -195,7 +267,7 @@ td, a, img {
 #MapData-Text {
   align-items: flex-start;
   background-color: rgba(0,0,0,0.2);
-  color: white;
+  color: var(--secondary_text_color);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -215,26 +287,25 @@ table {
   border-collapse: collapse;
 }
 
-#Tables {
+#Tables, #TablesLeaderBoards {
   border-collapse: collapse;
-  color: white;
+  color: var(--secondary_text_color);
   display: flex;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   justify-content: center;
-  padding-bottom: 30px;
 }
 
-#Tables tr {
-  color: #FFF;
+#Tables tr, #TablesLeaderBoards tr {
+  color: var(--secondary_text_color);
   padding: 0px;
 }
 
-#Tables tbody tr {
+#Tables tbody tr, #TablesLeaderBoards tbody tr{
   border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
 }
 
-#Tables tbody tr:last-child {
+#Tables tbody tr:last-child, #TablesLeaderBoards tbody tr:last-child {
   border-bottom: none;
 }
 
@@ -243,7 +314,7 @@ table {
   overflow: hidden;
   padding: 6px;
   text-overflow: ellipsis;
-  width: 80px;
+  width: 125px;
   white-space: nowrap;
 }
 
@@ -268,34 +339,49 @@ table {
   display: none;
 }
 
-#Tables tbody tr td:first-child {
-  color: #E45051;
+#TableProTimes tbody tr td:nth-child(5) {
+    display: none;
+}
+
+#Tables tbody tr td:first-child, #TablesLeaderBoards tbody tr td:first-child {
+  color: var(--primary_text_color);
+  text-align: left;
+  width: 30px;
+  padding-left: 10px;
+}
+
+#Tables tbody tr:nth-child(even), #TablesLeaderBoards tbody tr:nth-child(even) {
+  background-color: rgba(0,0,0,0.2);
+}
+
+#Tables tbody tr td, #TablesLeaderBoards tbody tr td {
+  padding: 8px;
 }
 
 #displayMapTimes {
   align-items: flex-start;
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   display: none;
   flex-direction: row;
   font-family: sans-serif;
   justify-content: center;
   margin: auto;
-  width: 90%;
+  height: 800px;
 }
 
 #recentMapTimes {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   display: none;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   max-width: 900px;
   text-align: center;
-  width: 50%;
+  width: 90%;
 }
 
 #topMapTimes {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
@@ -308,15 +394,14 @@ table {
   display: none;
   margin: auto;
   justify-content: center;
-  width: 98%;
 }
 
 #playerInfo {
-  color: #FFF;
+  color: var(--secondary_text_color);
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  font-size: calc(12px + 0.4vh);
+  font-size: 15px;
   padding-top: 15px;
 }
 
@@ -326,8 +411,8 @@ table {
 }
 
 #playerInfo #playerAvatar img {
-  width: 125px;
-  height: 125px;
+  width: 75px;
+  height: 75px;
   cursor: default;
 }
 
@@ -351,7 +436,7 @@ table {
 
 #displayPlayerTimes {
   align-items: center;
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
@@ -362,8 +447,8 @@ table {
 
 #NoPlayer {
   align-items: center;
-  background-color: #191919;
-  color: white;
+  background-color: var(--primary_background_color);
+  color: var(--secondary_text_color);
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
@@ -374,7 +459,7 @@ table {
 }
 
 #displayPlayerTimes a {
-  color: #FFF;
+  color: var(--secondary_text_color);
   text-decoration: none;
 }
 
@@ -384,12 +469,12 @@ table {
 }
 
 #TablesPlayer {
-  font-size: calc(9px + .5vh);
+  font-size: 13px;
   padding-top: 10px;
 }
 
 #TablesPlayer tbody tr td {
-  color: #FFF;
+  color: var(--secondary_text_color);
   font-family: 'Montserrat', sans-serif;
   padding: 8px;
 }
@@ -429,7 +514,7 @@ table {
 }
 
 #TableTitle td {
-  color: #E45051 !important;
+  color: var(--primary_text_color) !important;
 }
 
 #TableTimes tr td:nth-child(2) {
@@ -449,8 +534,7 @@ table {
 .map_div {
   display: flex;
   flex-direction: column;
-  height: 27vh;
-  padding-bottom: 3vh;
+  height: 180px;
 }
 
 .map_div span {
@@ -459,21 +543,21 @@ table {
 }
 
 .map_div div {
-  color: #E45051;
+  color: var(--primary_text_color);
   display: inline-block;
 }
 
 .map_div img {
   align-self: center;
-  height: 14vh;
+  height: 80px;
   position: relative;
-  width: 24vh;
+  width: 150px;
 }
 
 .map_div img::after {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   bottom: 0%;
-  color: white;
+  color: var(--secondary_text_color);
   content: "Image not available";
   display: flex;
   justify-content: center;
@@ -489,40 +573,52 @@ table {
   font-family: sans-serif;
   justify-content: center;
   margin: auto;
-  width: 98%;
 }
 
 #LeaderboardHeader {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 }
 
 #TitleLeaderboards {
-  color: white;
+  color: var(--secondary_text_color);
   outline: none;
   text-decoration: none;
 }
 
 #proPlayerLeaderboards {
-  background-color: #191919;
+  background-color: var(--primary_background_color);
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   min-height: 850px;
-  padding-bottom: 25px;
   text-align: center;
+  width: 100%;
 }
 
-#LeaderboardTables_points_title, #LeaderboardTables_records_title {
-  color: white;
+#LeaderboardTables_points, #LeaderboardTables_records {
+  flex-direction: column;
+}
+
+#LeaderboardTables_points_title, #LeaderboardTables_records_title, #MobileLeaderboardsMode {
+  color: var(--secondary_text_color);
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
 }
 
+#MobileLeaderboardsMode {
+  background-color: var(--primary_background_color);
+  border: none;
+  display: none;
+  justify-content: center;
+  margin-bottom: 10px;
+  outline: none;
+}
+
 #LeaderboardOptions {
-  color: white;
+  color: var(--secondary_text_color);
   display: none;
   justify-content: center;
   padding-bottom: 20px;
@@ -531,7 +627,7 @@ table {
 #LeaderBoardOptions_tech, #LeaderBoardOptions_bhop, #LeaderBoardOptions_climb, #LeaderBoardOptions_combo, #LeaderBoardOptions_overall {
   background: none;
   border: none;
-  color: #E45051;
+  color: var(--primary_text_color);
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
@@ -540,20 +636,19 @@ table {
 }
 
 #LeaderBoardOptions_tech:hover, #LeaderBoardOptions_bhop:hover, #LeaderBoardOptions_climb:hover, #LeaderBoardOptions_combo:hover, #LeaderBoardOptions_overall:hover {
-  color: orange !important;
+  color: var(--secondary_text_color) !important;
   transition: 0.2s ease;
 }
 
 #searchBar {
-  background-color: #191919;
-  border-bottom: 4px #393E46 solid;
+  background-color: var(--primary_background_color);
   display: flex;
   justify-content: center;
 }
 
 #errorWarning {
-  background-color: #191919;
-  color: white;
+  background-color: var(--primary_background_color);
+  color: var(--secondary_text_color);
   display: none;
   font-family: 'Lalezar', cursive;
   justify-content: center;
@@ -561,54 +656,53 @@ table {
 }
 
 #mode-kz_vanilla-desktop:hover, #mode-kz_simple-desktop:hover, #mode-kz_timer-desktop:hover {
-  color: orange !important;
+  color: var(--secondary_text_color) !important;
   transition: 0.2s ease;
 }
 
 #mode-kz_simple-desktop {
-  color: orange;
+  color: var(--secondary_text_color);
 }
 
 input[type=search] {
   background: transparent;
   border: none;
-  border-bottom: 2px #dddfd4 solid;
+  border-bottom: 2px var(--secondary_text_color) solid;
   border-radius: 4px;
-  color: #dddfd4;
+  color: var(--secondary_text_color);
   font-size: 16px;
   margin: 8px 0px;
-  min-width: 80%;
   outline: none;
   text-align: center;
   padding-left: 15px;
 }
 
 input[type=search]::-webkit-search-cancel-button {
-  background: #E45051;
+  background: var(--primary_text_color);
   border-radius: 4px;
-  color: #E45051;
+  color: var(--primary_text_color);
   height: 10px;
   width: 10px;
   -webkit-appearance: none;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: white;
+  color: var(--secondary_text_color);
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: white;
+  color: var(--secondary_text_color);
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: white;
+  color: var(--secondary_text_color);
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: white;
+  color: var(--secondary_text_color);
 }
 
 ::-webkit-scrollbar-track
 {
-  background: linear-gradient(#191919, #393E46); /* Standard syntax */
-  background: -webkit-linear-gradient(#191919, #393E46); /* For Safari 5.1 to 6.0 */
+  background: linear-gradient(var(--primary_background_color), var(--secondary_background_color)); /* Standard syntax */
+  background: -webkit-linear-gradient(var(--primary_background_color), var(--secondary_background_color)); /* For Safari 5.1 to 6.0 */
   border-radius: 2px;
 }
 
@@ -620,7 +714,7 @@ input[type=search]::-webkit-search-cancel-button {
 
 ::-webkit-scrollbar-thumb
 {
-  background-color: #E45051;
+  background-color: var(--primary_text_color);
   border-radius: 2px;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 }
@@ -644,16 +738,16 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 #pagination a {
-  color: white;
+  color: var(--secondary_text_color);
   font-family: 'Roboto', sans-serif;
-  font-size: calc(12px + .8vh);
+  font-size: 20px;
   padding: 8px 32px;
   position: relative;
   text-decoration: none;
 }
 
 #pagination #previous {
-  background-color: #E45051;
+  background-color: var(--primary_text_color);
 }
 
 #pagination ul, #pagination a, .title, .modes, #recentTimes, #topTimes {
@@ -668,7 +762,7 @@ input[type=search]::-webkit-search-cancel-button {
 
 
 /* ``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````*/
-@media (min-width: 1000px) {
+@media (min-width: 768px) {
   .Header {
     z-index: 5;
   }
@@ -681,6 +775,22 @@ input[type=search]::-webkit-search-cancel-button {
 
   #wr_progression_button {
     display: flex;
+  }
+
+  #mobile_menu_icon {
+    display: none;
+  }
+
+  #MobileLeaderboardsLink {
+    display: none;
+  }
+
+  #MobileMapsLink {
+    display: none;
+  }
+
+  #searchBar {
+    border-bottom: 4px var(--secondary_background_color) solid;
   }
 
   #maps {
@@ -700,52 +810,28 @@ input[type=search]::-webkit-search-cancel-button {
     width: 70%;
   }
 
-  #list_of_maps, #TitleMaps {
-    background-color: #191919;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 0;
-    padding-bottom: 15px;
-    padding-top: 15px;
-  }
-
-  #TitleMaps {
-    font-family: 'Montserrat', sans-serif;
-    justify-content: center;
-  }
-
   #list_of_maps > .maps_page_list {
-    align-self: flex-start;
-    display: flex;
-    flex-direction: row;
     height: 100px;
-    margin: 5px;
-    min-width: 320px;
     padding-left: 20px;
-    width: 30%;
   }
 
   .maps_page_list span {
-    align-self: flex-start;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
     font-size: 15px;
   }
 
   #loading {
     align-items: center;
     align-self: center;
-    background-color: #191919;
+    background-color: var(--primary_background_color);
     bottom:0;
-    color: white;
+    color: var(--secondary_text_color);
     display: flex;
     justify-content: center;
     left:0;
     opacity: 1;
     position: fixed;
     right:0;
-    top: 154px;
+    top: 150px;
     transition: opacity 0.1s linear;
     z-index: 1;
   }
@@ -753,8 +839,8 @@ input[type=search]::-webkit-search-cancel-button {
   #errorloading {
     align-items: center;
     align-self: center;
-    background-color: #191919;
-    color: white;
+    background-color: var(--primary_background_color);
+    color: var(--secondary_text_color);
     display: none;
     height: 600px;
     justify-content: center;
@@ -772,7 +858,6 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   .btn {
-    color: #E45051;
     display: flex;
     background-color: transparent;
     border: none;
@@ -792,7 +877,7 @@ input[type=search]::-webkit-search-cancel-button {
     -o-user-select: none;
     user-select: none;
     /* CSS */
-    background-color: #191919;
+    background-color: var(--primary_background_color);
     font-family: 'Roboto', sans-serif;
     list-style: none;
     margin: 0;
@@ -811,13 +896,13 @@ input[type=search]::-webkit-search-cancel-button {
     padding: 8px;
   }
   .navbar li {
-    background-color: #191919;
-    color: #EEE;
+    background-color: var(--primary_background_color);
+    color: var(--secondary_text_color);
     display: inline;
     text-align: center;
   }
   .navbar a {
-    color: #EEE;
+    color: var(--secondary_text_color);
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 15px;
@@ -842,11 +927,12 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   .title {
-    color: #DDDFD4;
+    color: var(--secondary_text_color);
     display: flex;
     font-family: 'Roboto', sans-serif;
     font-size: 42px;
     justify-content: center;
+    padding-right: 0px;
   }
 
   .modes {
@@ -858,7 +944,8 @@ input[type=search]::-webkit-search-cancel-button {
 
   #displayTimes {
     background-color: transparent;
-    width: 50%;
+    width: 900px;
+    height: 650px;
   }
 
   #TableTimes {
@@ -867,60 +954,50 @@ input[type=search]::-webkit-search-cancel-button {
 
   #recentTimes, #topTimes {
     font-size: 16px;
-    height: 600px;
-    width: 550px;
+    height: 650px;
+    width: 450px;
+    text-align: left;
   }
 
-  #recentTimes img::after {
+  #recent-times-heading, #top-times-heading {
+    font-size: 24px;
+    padding-left: 20px;
+  }
+
+  #topTimes img::after, #recentTimes img::after {
     font-size: 12px;
   }
 
-  #recentTimes span {
+  #topTimes span, #recentTimes span {
     background-color: transparent;
-    font-size: calc(12px + 0.1vw);
-    padding: 5px;
+    font-size: 15px;
     padding-left: 9px;
-  }
-
-  #topTimes img::after {
-    font-size: 12px;
-  }
-
-  #topTimes span {
-    background-color: transparent;
-    font-size: calc(12px + 0.1vw);
-    padding: 5px;
-    padding-left: 9px;
+    padding-top: 20px;
   }
 
   #displayMapTimes {
     margin: auto;
-    min-height: 50vh;
-    min-width: 1300px;
-    padding-bottom: 50px;
+    height: 850px;
+    width: 1600px;
   }
 
   #recentMapTimes {
     display: flex;
-    font-size: calc(12px + .5vh);
+    font-size: 15px;
   }
 
-  #recentMapTimes h2 {
+  #recentMapTimes h2, #topMapTimes h2 {
     font-size: 20px;
+    font-weight: bold;
   }
 
   #topMapTimes {
-    font-size: calc(12px + .5vh);
+    font-size: 15px;
     width: 50%;
   }
 
-  #topMapTimes h2 {
-    font-size: 20px;
-  }
-
   #displayMapData {
-    min-width: 1300px;
-    width: 90%;
+    width: 1600px;
   }
 
   #MapData-Text {
@@ -929,10 +1006,10 @@ input[type=search]::-webkit-search-cancel-button {
 
   #Tables, #TablesLeaderBoards {
     border-collapse: collapse;
-    color: white;
+    color: var(--secondary_text_color);
     display: flex;
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     justify-content: center;
     width: auto;
   }
@@ -945,12 +1022,16 @@ input[type=search]::-webkit-search-cancel-button {
     margin-right: 50px;
   }
 
+  #LeaderboardHeader {
+    flex-direction: row;
+  }
+
   #Tables tbody tr td:nth-child(2) {
     width: 100px;
   }
 
   #Tables tr, #TablesLeaderBoards tr {
-    color: #FFF;
+    color: var(--secondary_text_color);
     padding: 0px;
   }
 
@@ -966,14 +1047,8 @@ input[type=search]::-webkit-search-cancel-button {
     background-color: rgba(0,0,0,0.2);
   }
 
-  #Tables tbody tr:last-child, #TablesLeaderBoards tbody tr:last-child {
-    border-bottom: none;
-  }
-
   #Tables tbody tr td:first-child, #TablesLeaderBoards tbody tr td:first-child {
-    color: #E45051;
-    text-align: left;
-    width: 35px;
+    padding-left: none;
   }
 
   #Tables tbody tr td:nth-child(2), #TablesLeaderBoards tbody tr td:nth-child(2) {
@@ -982,7 +1057,7 @@ input[type=search]::-webkit-search-cancel-button {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100px;
+    width: 120px;
   }
 
   #Tables tbody tr td:nth-child(3), #TablesLeaderBoards tbody tr td:nth-child(3) {
@@ -1005,7 +1080,7 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   #TableOverallTimes tbody tr td:nth-child(6) {
-    color: #E45051;
+    color: var(--primary_text_color);
     display: inline-block;
     overflow: hidden;
     padding: 0px 25px 0px 25px;
@@ -1015,7 +1090,7 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   #TableProTimes tbody tr td:nth-child(5) {
-    color: #E45051;
+    color: var(--primary_text_color);
     display: inline-block;
     overflow: hidden;
     padding: 0px 25px 0px 25px;
@@ -1053,7 +1128,7 @@ input[type=search]::-webkit-search-cancel-button {
 
   #displayPlayerTimes {
     align-items: flex-start;
-    background-color: #191919;
+    background-color: var(--primary_background_color);
     display: flex;
     flex-direction: row;
     font-family: 'Montserrat', sans-serif;
@@ -1065,15 +1140,16 @@ input[type=search]::-webkit-search-cancel-button {
 
   #NoPlayer {
     align-items: flex-start;
-    background-color: #191919;
-    color: white;
+    background-color: var(--primary_background_color);
+    color: var(--secondary_text_color);
     display: none;
     flex-direction: row;
     font-family: 'Montserrat', sans-serif;
     font-size: 35px;
-    height: 790px;
+    height: 740px;
     justify-content: space-evenly;
     padding-bottom: 30px;
+    padding-top: 50px;
     width: 1250px;
   }
 
@@ -1109,7 +1185,7 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   #mode-kz_vanilla-desktop:hover, #mode-kz_simple-desktop:hover, #mode-kz_timer-desktop:hover {
-    color: orange !important;
+    color: var(--secondary_text_color) !important;
     transition: 0.2s ease;
   }
 
@@ -1121,8 +1197,18 @@ input[type=search]::-webkit-search-cancel-button {
     display: none;
   }
 
+  #proPlayerLeaderboards {
+    padding-bottom: 25px;
+    width: 850px;
+  }
+
+  #playerInfo #playerAvatar img {
+    width: 125px;
+    height: 125px;
+  }
+
   #mode-kz_simple-desktop {
-    color: orange;
+    color: var(--secondary_text_color);
   }
 
   #playerBans {
@@ -1131,8 +1217,8 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   #TablesBans, #playerBanInfo {
-    background-color: #191919;
-    color: white;
+    background-color: var(--primary_background_color);
+    color: var(--secondary_text_color);
     display: none;
   }
 
@@ -1179,8 +1265,8 @@ input[type=search]::-webkit-search-cancel-button {
     align-self: flex-start;
     display: flex;
     flex-direction: row;
-    height: 84px;
-    padding-bottom: 20px;
+    height: 112px;
+    padding-bottom: 0px;
     padding-left: 20px;
   }
 
@@ -1191,17 +1277,16 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   .map_div div {
-    color: #E45051;
+    color: var(--primary_text_color);
     display: inline-block;
   }
 
   .map_div img {
-    align-self: center;
     border-radius: 4px;
-    box-shadow: 1px 1px 5px;
     height: 84px;
     position: relative;
-    width: 150px;
+    width: 100%;
+    max-width: 150px;
   }
 
   .map_div img::after {
@@ -1224,9 +1309,8 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   #pagination a {
-    color: white;
+    color: var(--secondary_text_color);
     font-family: 'Roboto', sans-serif;
-    font-size: calc(12px + .8vh);
     padding: 8px 32px;
     text-decoration: none;
   }
@@ -1243,10 +1327,6 @@ input[type=search]::-webkit-search-cancel-button {
 /**********************************************************************************************************************************************/
 
 @media (min-width: 1921px) {
-  #recentTimes, #topTimes {
-    height: 100%;
-    width: 100%;
-  }
 
   #list_maps {
     width: 50%;
@@ -1255,27 +1335,6 @@ input[type=search]::-webkit-search-cancel-button {
   #recentMapTimes, #topMapTimes {
     display: flex;
     width: 1000px;
-  }
-
-  #displayMapTimes {
-    height: auto;
-    min-height: 840px;
-    padding-bottom: 50px;
-    width: 75%;
-  }
-
-  #displayMapData {
-    width: 75%;
-  }
-
-  #Tables {
-    font-size: 16px;
-    height: auto;
-  }
-
-  #TablesPlayer {
-    font-size: 15px;
-    width: 1150px;
   }
 
   #displayPlayerProfile {
@@ -1291,18 +1350,5 @@ input[type=search]::-webkit-search-cancel-button {
     height: 112px;
     padding-bottom: 0px;
     padding-left: 20px;
-  }
-
-  .map_div img {
-    align-self: center;
-    border-radius: 4px;
-    box-shadow: 1px 1px 5px;
-    height: 84px;
-    position: relative;
-    width: 150px;
-  }
-
-  .map_div img::after {
-    line-height: 7;
   }
 }
