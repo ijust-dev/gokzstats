@@ -49,10 +49,6 @@ const default_secondary_text_color =        "#FFFFFF";
 const default_primary_background_color =    "#121212";
 const default_secondary_background_color =  "#424242";
 
-/*document.addEventListener("DOMContentLoaded", function(event) {
-    changeCSS(localStorage.getItem('sheet'));
-});*/
-
 
 // Home Page API call variable, main map list array
 let maplist = [];
