@@ -268,12 +268,27 @@ function dateConvert(time) {
   return time;
 }
 
+/* This does what you would expect
+*   Data fed into the API can be unsafe.
+*/
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+
+/* Check length of string...obviously
+*   But why does it not return directly and instead defines a global variable?
+*/
 function checkLength(name) {
   if (name.player_name === null) {
     playerName = "null";
     return;
   }
-  playerName = name.player_name;
+  playerName = escapeHtml(name.player_name);
   return;
 }
 
