@@ -78,9 +78,9 @@ let globalTimes = [];
 *   Limit of 100 is used to grab as many records as possible without significantly increasing load times
 *   Only 30 Records are displayed
 */
-const kz_simpleRecords =      "https://kztimerglobal.com/api/v1.0/records/top/recent?stage=0&tickrate=128&modes_list_string=kz_simple&limit=30";
-const kz_timerRecords =       "https://kztimerglobal.com/api/v1.0/records/top/recent?stage=0&tickrate=128&modes_list_string=kz_timer&limit=30";
-const kz_vanillaRecords =     "https://kztimerglobal.com/api/v1.0/records/top/recent?stage=0&tickrate=128&modes_list_string=kz_vanilla&limit=30";
+const kz_simpleRecords =      "https://kztimerglobal.com/api/v2.0/records/top/recent?stage=0&tickrate=128&modes_list_string=kz_simple&limit=30";
+const kz_timerRecords =       "https://kztimerglobal.com/api/v2.0/records/top/recent?stage=0&tickrate=128&modes_list_string=kz_timer&limit=30";
+const kz_vanillaRecords =     "https://kztimerglobal.com/api/v2.0/records/top/recent?stage=0&tickrate=128&modes_list_string=kz_vanilla&limit=30";
 
 /* Recent World Records URLs
 *   Limit of 200 is used to grab as many records as possible without significantly increasing load times
@@ -88,30 +88,30 @@ const kz_vanillaRecords =     "https://kztimerglobal.com/api/v1.0/records/top/re
 *   World Records column will display less than 30 if less than 30 maps have their record beaten more than 200 times (Possible on new map releases)
 *   Example: Zach47 gets 5 different improvements on bkz_apricity. Only one will display, but 5 are provided from the API.
 */
-const kz_simpleTopRecords =   "https://kztimerglobal.com/api/v1.0/records/top/recent?modes_list_string=kz_simple&place_top_at_least=1&has_teleports=false&stage=0&limit=200&tickrate=128";
-const kz_timerTopRecords =    "https://kztimerglobal.com/api/v1.0/records/top/recent?modes_list_string=kz_timer&place_top_at_least=1&has_teleports=false&stage=0&limit=200&tickrate=128";
-const kz_vanillaTopRecords =  "https://kztimerglobal.com/api/v1.0/records/top/recent?modes_list_string=kz_vanilla&place_top_at_least=1&has_teleports=false&stage=0&limit=200&tickrate=128";
+const kz_simpleTopRecords =   "https://kztimerglobal.com/api/v2.0/records/top/recent?modes_list_string=kz_simple&place_top_at_least=1&has_teleports=false&stage=0&limit=200&tickrate=128";
+const kz_timerTopRecords =    "https://kztimerglobal.com/api/v2.0/records/top/recent?modes_list_string=kz_timer&place_top_at_least=1&has_teleports=false&stage=0&limit=200&tickrate=128";
+const kz_vanillaTopRecords =  "https://kztimerglobal.com/api/v2.0/records/top/recent?modes_list_string=kz_vanilla&place_top_at_least=1&has_teleports=false&stage=0&limit=200&tickrate=128";
 
 // Generic Records per Mode URLs
-const kz_simpleLoadMap =      "https://kztimerglobal.com/api/v1.0/records/top?modes_list_string=kz_simple";
-const kz_timerLoadMap =       "https://kztimerglobal.com/api/v1.0/records/top?modes_list_string=kz_timer";
-const kz_vanillaLoadMap =     "https://kztimerglobal.com/api/v1.0/records/top?modes_list_string=kz_vanilla";
+const kz_simpleLoadMap =      "https://kztimerglobal.com/api/v2.0/records/top?modes_list_string=kz_simple";
+const kz_timerLoadMap =       "https://kztimerglobal.com/api/v2.0/records/top?modes_list_string=kz_timer";
+const kz_vanillaLoadMap =     "https://kztimerglobal.com/api/v2.0/records/top?modes_list_string=kz_vanilla";
 
 /* Leaderboard Points URLs
 *   KZTimer (id:200): finishes_greater_than is set to 10 due to large number of times on KZTimer
 *   Query limit is set to 20 to match "Top 20" style and to reduce load times (On TP leaderboards especially)
 */
-const Leaderboard_points_kztimer =    "https://kztimerglobal.com/api/v1.0/player_ranks?finishes_greater_than=10&mode_ids=200&stages=0&tickrates=128&has_teleports=false&limit=20";
-const Leaderboard_points_simplekz =   "https://kztimerglobal.com/api/v1.0/player_ranks?finishes_greater_than=0&mode_ids=201&stages=0&tickrates=128&has_teleports=false&limit=20";
-const Leaderboard_points_vanilla =    "https://kztimerglobal.com/api/v1.0/player_ranks?finishes_greater_than=0&mode_ids=202&stages=0&tickrates=128&has_teleports=false&limit=20";
+const Leaderboard_points_kztimer =    "https://kztimerglobal.com/api/v2.0/player_ranks?finishes_greater_than=10&mode_ids=200&stages=0&tickrates=128&has_teleports=false&limit=20";
+const Leaderboard_points_simplekz =   "https://kztimerglobal.com/api/v2.0/player_ranks?finishes_greater_than=0&mode_ids=201&stages=0&tickrates=128&has_teleports=false&limit=20";
+const Leaderboard_points_vanilla =    "https://kztimerglobal.com/api/v2.0/player_ranks?finishes_greater_than=0&mode_ids=202&stages=0&tickrates=128&has_teleports=false&limit=20";
 let leaderboardmode_points = Leaderboard_points_simplekz;
 
 /* Leaderboard World Records URLs
 *   Query limit is set to 20 to match "Top 20" style
 */
-const Leaderboard_records_kztimer =   "https://kztimerglobal.com/api/v1.0/records/top/world_records?stages=0&mode_ids=200&tickrates=128&has_teleports=false&limit=20";
-const Leaderboard_records_simplekz =  "https://kztimerglobal.com/api/v1.0/records/top/world_records?stages=0&mode_ids=201&tickrates=128&has_teleports=false&limit=20";
-const Leaderboard_records_vanilla =   "https://kztimerglobal.com/api/v1.0/records/top/world_records?stages=0&mode_ids=202&tickrates=128&has_teleports=false&limit=20";
+const Leaderboard_records_kztimer =   "https://kztimerglobal.com/api/v2.0/records/top/world_records?stages=0&mode_ids=200&tickrates=128&has_teleports=false&limit=20";
+const Leaderboard_records_simplekz =  "https://kztimerglobal.com/api/v2.0/records/top/world_records?stages=0&mode_ids=201&tickrates=128&has_teleports=false&limit=20";
+const Leaderboard_records_vanilla =   "https://kztimerglobal.com/api/v2.0/records/top/world_records?stages=0&mode_ids=202&tickrates=128&has_teleports=false&limit=20";
 let leaderboardmode_records = Leaderboard_records_simplekz;
 
 let page;
@@ -143,7 +143,7 @@ window.addEventListener('popstate', function(event) {
 *   Current limit is set to 1000. No definition of limit will result in an automatic limit of 50
 *   is_validated=true returns only global maps.
 */
-fetch("https://kztimerglobal.com/api/v1.0/maps?is_validated=true&limit=1000").then(function(response) {
+fetch("https://kztimerglobal.com/api/v2.0/maps?is_validated=true&limit=1000").then(function(response) {
   return response.json();
 })
 .then(function(maps) {
@@ -535,7 +535,7 @@ function getBans(offset) {
   document.getElementById("playerBans").style.display = "flex";
   document.getElementById("TablesBans").style.display = "flex";
   document.getElementById("playerBanInfo").style.display = "none";
-  fetch('https://kztimerglobal.com/api/v1.0/bans?offset=' + offset + '&limit=20')
+  fetch('https://kztimerglobal.com/api/v2.0/bans?offset=' + offset + '&limit=20')
   .then(function(response) {
     return response.json();
   })
@@ -1076,7 +1076,7 @@ function getPlayerInfo(url,id) {
         if (current_has_teleports === "false") {
           current_has_teleports = "true";
           console.log("Called here! - " + current_has_teleports);
-          getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+          getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         }
         else {
           console.log(current_has_teleports + ": Couldn't find them!");
@@ -1089,7 +1089,7 @@ function getPlayerInfo(url,id) {
         console.log("null catch");
         if (current_has_teleports === "false") {
           current_has_teleports = "true";
-          getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+          getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         }
         else {
           document.getElementById("displayPlayerTimes").style.display = "none";
@@ -1169,7 +1169,7 @@ function getPlayerInfo(url,id) {
         else if (currentmode === "kz_vanilla") {
           map_mode = 202;
         }
-        getPlayerPointsAndRanks("https://kztimerglobal.com/api/v1.0/player_ranks?steamid64s=" + steam64.add(steamBigInt).toString() + "&stages=0&mode_ids=" + map_mode + "&has_teleports=" + current_has_teleports + "&finishes_greater_than=0");
+        getPlayerPointsAndRanks("https://kztimerglobal.com/api/v2.0/player_ranks?steamid64s=" + steam64.add(steamBigInt).toString() + "&stages=0&mode_ids=" + map_mode + "&has_teleports=" + current_has_teleports + "&finishes_greater_than=0");
 
         // Cloudflare Worker as a CORS proxy. Using until a functional backend is in place.
         fetch("https://gokzstats.jacobwbarrett.workers.dev/?http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=A4EA5418B4405A51E6A97415C408D3BE&steamids=" + steam64.add(steamBigInt).toString())
@@ -1214,11 +1214,11 @@ document.getElementById("showTimes").addEventListener("click", function() {
   // If on pro, swap to TP. Else go to pro.
   if(link.includes("teleports=false")) {
     current_has_teleports = "true";
-    getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+    getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
   }
   else {
     current_has_teleports = "false";
-    getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+    getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
   }
 });
 
@@ -1264,8 +1264,8 @@ function Leaderboard(mode, type, has_teleports, length) {
 
   $("tbody tr").remove();
 
-  leaderboardmode_points = "https://kztimerglobal.com/api/v1.0/player_ranks?finishes_greater_than=0&stages=0&mode_ids=" + getmode_id(mode) + "&has_teleports=" + has_teleports + "&limit=" + length + "&mapTag=" + type;
-  leaderboardmode_records = "https://kztimerglobal.com/api/v1.0/records/top/world_records?stages=0&mode_ids=" + getmode_id(mode) + "&tickrates=128&has_teleports=" + has_teleports + "&limit=" + length + "&mapTag=" + type;
+  leaderboardmode_points = "https://kztimerglobal.com/api/v2.0/player_ranks?finishes_greater_than=0&stages=0&mode_ids=" + getmode_id(mode) + "&has_teleports=" + has_teleports + "&limit=" + length + "&mapTag=" + type;
+  leaderboardmode_records = "https://kztimerglobal.com/api/v2.0/records/top/world_records?stages=0&mode_ids=" + getmode_id(mode) + "&tickrates=128&has_teleports=" + has_teleports + "&limit=" + length + "&mapTag=" + type;
 
   if (mode === "kz_simple") {
     document.getElementById("TitleLeaderboards").innerHTML = "Top 20 Players for SimpleKZ | ";
@@ -1419,7 +1419,7 @@ function Leaderboard(mode, type, has_teleports, length) {
             if (event.target.parentNode.id.includes("STEAM_")) {
               document.getElementById("searchMap").value = event.target.parentNode.id;
               current_has_teleports = "false";
-              getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
+              getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
             }
           });
         }
@@ -1624,7 +1624,7 @@ function loadMap(map) {
           if (event.target.parentNode.id.includes("STEAM_") && event.target.parentNode.parentNode.parentNode.id === "TableOverallTimes") {
             document.getElementById("searchMap").value = event.target.parentNode.id;
             current_has_teleports = "false";
-            getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
+            getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
           }
         });
       }
@@ -1722,7 +1722,7 @@ function loadMap(map) {
           if (event.target.parentNode.id.includes("STEAM_") && event.target.parentNode.parentNode.parentNode.id === "TableProTimes") {
             document.getElementById("searchMap").value = event.target.parentNode.id;
             current_has_teleports = "false";
-            getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
+            getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
           }
         });
       }
@@ -1926,7 +1926,7 @@ function showWRProgression(map) {
   arrayY3 = [];
 
 
-  fetch('https://kztimerglobal.com/api/v1.0/maps?name=' + map)
+  fetch('https://kztimerglobal.com/api/v2.0/maps?name=' + map)
   .then(function(response) {
     return response.json();
   })
@@ -1944,7 +1944,7 @@ function showWRProgression(map) {
       map_mode = 202;
     }
     let trace1 = [], arrayX = [], arrayY = [], arrayY2 = [], arrayYFix = [], hover = [];
-    fetch("https://kztimerglobal.com/api/v1.0/records/top/recent?map_id=" + map_id + "&has_teleports=false&tickrate=128&stage=0&modes_list_string=" + currentmode + "&place_top_at_least=1")
+    fetch("https://kztimerglobal.com/api/v2.0/records/top/recent?map_id=" + map_id + "&has_teleports=false&tickrate=128&stage=0&modes_list_string=" + currentmode + "&place_top_at_least=1")
     .then(function(response) {
       return response.json();
     })
@@ -2251,11 +2251,11 @@ window.onload = function() {
       setTimeout(function() {
         if (name.startsWith("STEAM")) {
           current_has_teleports = "false";
-          getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+          getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         }
         else {
           current_has_teleports = "false";
-          getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+          getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         }
         document.getElementById("displayPlayerTimes").style.display = "flex";
         document.getElementById("displayMapTimes").style.display = "none";
@@ -2404,12 +2404,12 @@ window.onload = function() {
       }
       else if (document.getElementById("searchMap").value.toLowerCase().startsWith("steam")) {
         current_has_teleports = "false";
-        getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+        getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         return;
       }
       else {
         current_has_teleports = "false";
-        getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+        getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         return;
       }
     } else {
@@ -2509,12 +2509,12 @@ window.onload = function() {
       }
       else if (document.getElementById("searchMap").value.toLowerCase().startsWith("steam")) {
         current_has_teleports = "false";
-        getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+        getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         return;
       }
       else {
         current_has_teleports = "false";
-        getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+        getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         return;
       }
     } else {
@@ -2613,12 +2613,12 @@ window.onload = function() {
       }
       else if (document.getElementById("searchMap").value.toLowerCase().startsWith("steam")) {
         current_has_teleports = "false";
-        getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+        getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         return;
       }
       else {
         current_has_teleports = "false";
-        getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+        getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
         return;
       }
     } else {
@@ -2695,17 +2695,17 @@ window.onload = function() {
         }
         if (document.getElementById("searchMap").value.toLowerCase().startsWith("steam")) {
           if (document.getElementById("playerBans").style.display === "flex") {
-            getPlayerBanInfo("https://kztimerglobal.com/api/v1.0/bans?steam_id=" + document.getElementById("searchMap").value);
+            getPlayerBanInfo("https://kztimerglobal.com/api/v2.0/bans?steam_id=" + document.getElementById("searchMap").value);
           }
           else {
             current_has_teleports = "false";
-            getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+            getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
           }
           return;
         }
         else {
           current_has_teleports = "false";
-          getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
+          getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?player_name=" + document.getElementById("searchMap").value + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&modes_list_string=" + currentmode, document.getElementById("searchMap").value);
           return;
         }
       }
@@ -2828,7 +2828,7 @@ window.onload = function() {
           if (event.target.parentNode.id.includes("STEAM_")) {
             document.getElementById("searchMap").value = event.target.parentNode.id;
             current_has_teleports = "false";
-            getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
+            getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
           }
         });
       }
@@ -2895,7 +2895,7 @@ window.onload = function() {
             document.getElementById("searchMap").value = event.target.parentNode.id;
             resetAll();
             current_has_teleports = "false";
-            getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
+            getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
           }
         });
       }
@@ -3201,7 +3201,7 @@ window.onload = function() {
         if (event.target.parentNode.id.includes("STEAM_")) {
           document.getElementById("searchMap").value = event.target.parentNode.id;
           current_has_teleports = "false";
-          getPlayerInfo("https://kztimerglobal.com/api/v1.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
+          getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + event.target.parentNode.id + "&tickrate=128&stage=0&has_teleports=" + current_has_teleports + "&limit=1200&&place_top_at_least=20&modes_list_string=" + currentmode, event.target.parentNode.id);
         }
       });
     }
