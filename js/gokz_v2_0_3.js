@@ -1173,7 +1173,7 @@ function getPlayerInfo(url,id) {
         else if (currentmode === "kz_vanilla") {
           map_mode = 202;
         }
-        getPlayerPointsAndRanks("https://kztimerglobal.com/api/v2.0/player_ranks?steamid64s=" + steam64.add(steamBigInt).toString() + "&stages=0&mode_ids=" + map_mode + "&has_teleports=" + current_has_teleports + "&finishes_greater_than=0");
+        getPlayerPointsAndRanks("https://kztimerglobal.com/api/v2.0/player_ranks?steamid64s=" + playerInfo[0].steamid64 + "&stages=0&mode_ids=" + map_mode + "&has_teleports=" + current_has_teleports + "&finishes_greater_than=0");
 
         // Cloudflare Worker as a CORS proxy. Using until a functional backend is in place.
         fetch("https://gokzstats.jacobwbarrett.workers.dev/?http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=A4EA5418B4405A51E6A97415C408D3BE&steamids=" + steam64.add(steamBigInt).toString())
