@@ -1028,6 +1028,10 @@ function sortPlayerInfo(map) {
 
 let link = "";
 
+function playerinfo(steamid, has_teleports, mode) {
+  getPlayerInfo("https://kztimerglobal.com/api/v2.0/records/top?steam_id=" + steamid + "&tickrate=128&stage=0&has_teleports=" + has_teleports + "&limit=1200&&modes_list_string=" + mode, document.getElementById("searchMap").value);
+}
+
 /* Player Profile Page
 *   Default Table: Recent Pro Records
 */
@@ -1543,7 +1547,7 @@ function loadMap(map) {
         cell6.innerHTML = "Server";
         cell7.innerHTML = "Date";
 
-        document.getElementById("MapData-TPWR").innerHTML = "<span style='display: inline-block; width:35px;'>" + "TP " + "</span>" + "<span style='color:" + primary_text_color + "'>" + timeConvert(mapTP[0].time) + "</span>" + " by " + "<span style='color:" + primary_text_color + "'>" + mapTP[0].player_name + "</span>";
+        document.getElementById("MapData-TPWR").innerHTML = "<span style='display: inline-block; width:35px;'>" + "TP " + "</span>" + "<span style='color:" + primary_text_color + "'>" + timeConvert(mapTP[0].time) + "</span>" + " by " + "<span style='color:" + primary_text_color + "'><a target='blank' style='text-decoration:none;color:inherit' onclick='" + `playerinfo("${mapTP[0].steam_id}", ${mapTP[0].teleports > 0}, "${mapTP[0].mode}")` + "'>" + mapTP[0].player_name + "</a></span>";
         document.getElementById("MapData-Name").innerHTML = mapTP[0].map_name;
         document.getElementById("MapData-Image").src = imageBaseURL + mapTP[0].map_name + ".webp";
 
@@ -1645,8 +1649,7 @@ function loadMap(map) {
         cell4.innerHTML = "Points";
         cell5.innerHTML = "Server";
         cell6.innerHTML = "Date";
-
-        document.getElementById("MapData-ProWR").innerHTML = "<span style='display: inline-block; width:35px;'>" + "Pro " + "</span>" + "<span style='color:" + primary_text_color + "'>" + timeConvert(mapPro[0].time) + "</span>" + " by " + "<span style='color:" + primary_text_color + "'>" + mapPro[0].player_name + "</span>";
+        document.getElementById("MapData-ProWR").innerHTML = "<span style='display: inline-block; width:35px;'>" + "Pro " + "</span>" + "<span style='color:" + primary_text_color + "'>" + timeConvert(mapPro[0].time) + "</span>" + " by " + "<span style='color:" + primary_text_color + "'><a target='blank' style='text-decoration:none;color:inherit' onclick='" + `playerinfo("${mapPro[0].steam_id}", ${mapPro[0].teleports > 0}, "${mapPro[0].mode}")` + "'>" + mapPro[0].player_name + "</a></span>";
         document.getElementById("MapData-Name").innerHTML = mapPro[0].map_name;
         document.getElementById("MapData-Image").src = imageBaseURL + mapPro[0].map_name + ".webp";
 
