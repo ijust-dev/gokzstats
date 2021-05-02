@@ -3,7 +3,7 @@ Stats website for the CSGO:KZ Community
 
 https://gokzstats.com
 
-# Current Features
+# Features
 Global API support
 
 Maps leaderboards
