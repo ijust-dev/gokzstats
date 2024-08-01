@@ -823,14 +823,13 @@ input[type=search]::-webkit-search-cancel-button {
     align-items: center;
     align-self: center;
     background-color: var(--primary_background_color);
-    bottom:0;
     color: var(--secondary_text_color);
     display: flex;
     justify-content: center;
-    left:0;
     opacity: 1;
     position: fixed;
-    right:0;
+    width: 100%;
+    height: 100%;
     top: 150px;
     transition: opacity 0.1s linear;
     z-index: 1;
